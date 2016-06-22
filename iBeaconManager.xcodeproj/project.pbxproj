@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		940D41011D1B29350045440C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940D41001D1B29350045440C /* AppDelegate.swift */; };
-		940D41031D1B29350045440C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940D41021D1B29350045440C /* ViewController.swift */; };
+		940D41031D1B29350045440C /* iBeaconList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940D41021D1B29350045440C /* iBeaconList.swift */; };
 		940D41061D1B29350045440C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940D41041D1B29350045440C /* Main.storyboard */; };
 		940D41081D1B29350045440C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940D41071D1B29350045440C /* Assets.xcassets */; };
 		940D410B1D1B29350045440C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940D41091D1B29350045440C /* LaunchScreen.storyboard */; };
@@ -28,7 +28,7 @@
 /* Begin PBXFileReference section */
 		940D40FD1D1B29350045440C /* iBeaconManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		940D41001D1B29350045440C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		940D41021D1B29350045440C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		940D41021D1B29350045440C /* iBeaconList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconList.swift; sourceTree = "<group>"; };
 		940D41051D1B29350045440C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		940D41071D1B29350045440C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		940D410A1D1B29350045440C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				940D41001D1B29350045440C /* AppDelegate.swift */,
-				940D41021D1B29350045440C /* ViewController.swift */,
+				940D41021D1B29350045440C /* iBeaconList.swift */,
 				940D41041D1B29350045440C /* Main.storyboard */,
 				940D41071D1B29350045440C /* Assets.xcassets */,
 				940D41091D1B29350045440C /* LaunchScreen.storyboard */,
@@ -203,7 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				940D41031D1B29350045440C /* ViewController.swift in Sources */,
+				940D41031D1B29350045440C /* iBeaconList.swift in Sources */,
 				940D41011D1B29350045440C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
