@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9414CA231D1E929300C08C6D /* RegionsPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA221D1E929200C08C6D /* RegionsPool.swift */; };
+		9414CA281D1FC29300C08C6D /* RegionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA271D1FC29300C08C6D /* RegionsController.swift */; };
+		9414CA391D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA371D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld */; };
+		9414CA3C1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */; };
+		9414CA3D1D1FF05500C08C6D /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */; };
 		94F0D4A61D1D373300EBF14B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A51D1D373300EBF14B /* AppDelegate.swift */; };
-		94F0D4A81D1D373300EBF14B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A71D1D373300EBF14B /* ViewController.swift */; };
+		94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */; };
 		94F0D4AB1D1D373300EBF14B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4A91D1D373300EBF14B /* Main.storyboard */; };
 		94F0D4AD1D1D373300EBF14B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4AC1D1D373300EBF14B /* Assets.xcassets */; };
 		94F0D4B01D1D373300EBF14B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4AE1D1D373300EBF14B /* LaunchScreen.storyboard */; };
@@ -26,9 +31,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9414CA221D1E929200C08C6D /* RegionsPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionsPool.swift; sourceTree = "<group>"; };
+		9414CA271D1FC29300C08C6D /* RegionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionsController.swift; sourceTree = "<group>"; };
+		9414CA381D1FEFF900C08C6D /* RegionsInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RegionsInfo.xcdatamodel; sourceTree = "<group>"; };
+		9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegionInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		94F0D4A21D1D373300EBF14B /* iBeaconManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0D4A51D1D373300EBF14B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94F0D4A71D1D373300EBF14B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconsController.swift; sourceTree = "<group>"; };
 		94F0D4AA1D1D373300EBF14B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94F0D4AC1D1D373300EBF14B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94F0D4AF1D1D373300EBF14B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,11 +88,16 @@
 			isa = PBXGroup;
 			children = (
 				94F0D4A51D1D373300EBF14B /* AppDelegate.swift */,
-				94F0D4A71D1D373300EBF14B /* ViewController.swift */,
+				94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */,
+				9414CA271D1FC29300C08C6D /* RegionsController.swift */,
+				9414CA221D1E929200C08C6D /* RegionsPool.swift */,
+				9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */,
+				9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */,
 				94F0D4A91D1D373300EBF14B /* Main.storyboard */,
-				94F0D4AC1D1D373300EBF14B /* Assets.xcassets */,
 				94F0D4AE1D1D373300EBF14B /* LaunchScreen.storyboard */,
+				94F0D4AC1D1D373300EBF14B /* Assets.xcassets */,
 				94F0D4B11D1D373300EBF14B /* Info.plist */,
+				9414CA371D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld */,
 			);
 			path = iBeaconManager;
 			sourceTree = "<group>";
@@ -197,7 +212,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F0D4A81D1D373300EBF14B /* ViewController.swift in Sources */,
+				94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */,
+				9414CA281D1FC29300C08C6D /* RegionsController.swift in Sources */,
+				9414CA3C1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift in Sources */,
+				9414CA3D1D1FF05500C08C6D /* RegionInfo.swift in Sources */,
+				9414CA231D1E929300C08C6D /* RegionsPool.swift in Sources */,
+				9414CA391D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld in Sources */,
 				94F0D4A61D1D373300EBF14B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +406,7 @@
 				94F0D4C11D1D373300EBF14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94F0D4C21D1D373300EBF14B /* Build configuration list for PBXNativeTarget "iBeaconManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -394,8 +415,22 @@
 				94F0D4C41D1D373300EBF14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9414CA371D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9414CA381D1FEFF900C08C6D /* RegionsInfo.xcdatamodel */,
+			);
+			currentVersion = 9414CA381D1FEFF900C08C6D /* RegionsInfo.xcdatamodel */;
+			path = RegionsInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 94F0D49A1D1D373300EBF14B /* Project object */;
 }
