@@ -12,12 +12,12 @@ import CoreData
 class RegionsController: UITableViewController {
 
     @IBOutlet weak var addButton: UIBarButtonItem!
-    var regionPool: RegionsPool!
+    var regionsPool: RegionsPool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        regionPool = RegionsPool.getInstance()
+        regionsPool = RegionsPool.getInstance()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,51 +26,24 @@ class RegionsController: UITableViewController {
     }
     
     @IBAction func addTeam(sender: AnyObject) {
-        let alert = UIAlertController(title: "Region Info",
-            message: "Add a new region Info",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) in
-            textField.placeholder = "Region Name"
-        }
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) in
-            textField.placeholder = "Region UUID"
-        }
-
-        alert.addAction(UIAlertAction(title: "Save",
-            style: .Default, handler: { (action: UIAlertAction!) in
-                
-                let nameText = alert.textFields![0].text
-                let uuidText = alert.textFields![1].text
-                
-                self.regionPool.addObject((nameText)!, withUUID: (uuidText)!)
-                self.tableView.reloadData()
-                
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel",
-            style: .Default, handler: { (action: UIAlertAction!) in
-                print("Cancel")
-        }))
-        presentViewController(alert, animated: true, completion: nil)
+        self.performSegueWithIdentifier("AddRegion", sender: nil)
     }
     
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return regionPool.sectionsCount
+        return regionsPool.sectionsCount
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return regionPool.rowsInSection(section)
+        return regionsPool.rowsInSection(section)
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RegionCell", forIndexPath: indexPath)
         
-        let region = regionPool.getObjectAtIndex(indexPath)
+        let region = regionsPool.getObjectAtIndex(indexPath)
         cell.textLabel?.text = region.name
         cell.detailTextLabel?.text = region.uuid
         return cell
@@ -88,8 +61,23 @@ class RegionsController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            regionPool.removeObjectAtIndex(indexPath)
+            regionsPool.removeObjectAtIndex(indexPath)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddRegion" {
+            let controller = segue.destinationViewController as! AddRegionViewController
+            controller.delegate = self
+        }
+    }
+}
+
+extension RegionsController: AddRegionViewControllerDelegate {
+    func addRegion(name: String, withUUID uuid: String) {
+        regionsPool?.addObject(name, withUUID: uuid)
+        tableView.reloadData()
+        navigationController?.popViewControllerAnimated(true)
     }
 }

@@ -12,6 +12,7 @@
 		9414CA391D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA371D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld */; };
 		9414CA3C1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */; };
 		9414CA3D1D1FF05500C08C6D /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */; };
+		943334811D25CE020012BF8C /* AddRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943334801D25CE020012BF8C /* AddRegionViewController.swift */; };
 		94F0D4A61D1D373300EBF14B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A51D1D373300EBF14B /* AppDelegate.swift */; };
 		94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */; };
 		94F0D4AB1D1D373300EBF14B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4A91D1D373300EBF14B /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		9414CA381D1FEFF900C08C6D /* RegionsInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RegionsInfo.xcdatamodel; sourceTree = "<group>"; };
 		9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegionInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
+		943334801D25CE020012BF8C /* AddRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRegionViewController.swift; sourceTree = "<group>"; };
 		94F0D4A21D1D373300EBF14B /* iBeaconManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0D4A51D1D373300EBF14B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconsController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				94F0D4A51D1D373300EBF14B /* AppDelegate.swift */,
 				94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */,
 				9414CA271D1FC29300C08C6D /* RegionsController.swift */,
+				943334801D25CE020012BF8C /* AddRegionViewController.swift */,
 				9414CA221D1E929200C08C6D /* RegionsPool.swift */,
 				9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */,
 				9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */,
@@ -217,6 +220,7 @@
 				9414CA3C1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift in Sources */,
 				9414CA3D1D1FF05500C08C6D /* RegionInfo.swift in Sources */,
 				9414CA231D1E929300C08C6D /* RegionsPool.swift in Sources */,
+				943334811D25CE020012BF8C /* AddRegionViewController.swift in Sources */,
 				9414CA391D1FEFF900C08C6D /* RegionsInfo.xcdatamodeld in Sources */,
 				94F0D4A61D1D373300EBF14B /* AppDelegate.swift in Sources */,
 			);
