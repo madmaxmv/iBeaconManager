@@ -74,6 +74,7 @@ class RegionsPool: NSObject {
         region.name = name
         region.uuid = uuid
         saveContext()
+        updateFetchResult()
     }
     
     func removeObjectAtIndex(indexPath: NSIndexPath) {

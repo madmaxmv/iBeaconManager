@@ -42,17 +42,17 @@ class RegionsController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Save",
             style: .Default, handler: { (action: UIAlertAction!) in
                 
-                let nameTextField = alert.textFields![0]
-                let zoneTextField = alert.textFields![1]
+                let nameText = alert.textFields![0].text
+                let uuidText = alert.textFields![1].text
                 
-                self.regionPool.addObject((nameTextField.text)!, withUUID: (zoneTextField.text)!)
+                self.regionPool.addObject((nameText)!, withUUID: (uuidText)!)
+                self.tableView.reloadData()
                 
         }))
         alert.addAction(UIAlertAction(title: "Cancel",
             style: .Default, handler: { (action: UIAlertAction!) in
                 print("Cancel")
         }))
-        
         presentViewController(alert, animated: true, completion: nil)
     }
     
