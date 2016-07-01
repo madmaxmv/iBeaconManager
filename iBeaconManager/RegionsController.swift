@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import hndlSegue
 
 class RegionsController: UITableViewController {
@@ -51,12 +50,6 @@ class RegionsController: UITableViewController {
         cell.textLabel?.text = region.name
         cell.detailTextLabel?.text = region.uuid
         return cell
-    }
-    
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if motion == .MotionShake {
-            addButton.enabled = true
-        }
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
