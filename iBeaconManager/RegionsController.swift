@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import hndlSegue
 
 class RegionsController: UITableViewController {
 
@@ -26,7 +27,10 @@ class RegionsController: UITableViewController {
     }
     
     @IBAction func addTeam(sender: AnyObject) {
-        self.performSegueWithIdentifier("AddRegion", sender: nil)
+        self.performSegueWithIdentifier("AddRegion", sender: nil) { segue, sender in
+            let controller = segue.destinationViewController as! AddRegionViewController
+            controller.delegate = self
+        }
     }
     
     // MARK: - Table view data source
@@ -63,13 +67,6 @@ class RegionsController: UITableViewController {
         if editingStyle == .Delete {
             regionsPool.removeObjectAtIndex(indexPath)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "AddRegion" {
-            let controller = segue.destinationViewController as! AddRegionViewController
-            controller.delegate = self
         }
     }
 }

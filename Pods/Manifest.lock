@@ -1,0 +1,10 @@
+PODS:
+  - hndlSegue (0.2)
+
+DEPENDENCIES:
+  - hndlSegue (> 0.1)
+
+SPEC CHECKSUMS:
+  hndlSegue: bb17f91adfeb65f1a689469051c4956895fdb76c
+
+COCOAPODS: 0.39.0

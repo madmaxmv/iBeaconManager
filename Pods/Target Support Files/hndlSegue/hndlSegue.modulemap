@@ -1,0 +1,6 @@
+framework module hndlSegue {
+  umbrella header "hndlSegue-umbrella.h"
+
+  export *
+  module * { export * }
+}
