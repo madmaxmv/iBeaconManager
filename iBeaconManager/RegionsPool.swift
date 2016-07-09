@@ -12,15 +12,17 @@ import CoreData
 
 class RegionsPool: NSObject {
     
-//    private var locationManager = CLLocationManager()
-//    private var beaconsUDIDs = [NSUUID]()
-    
     static private let singlePool = RegionsPool()
     var managedObjectContext: NSManagedObjectContext!
-    
+    private var locationManager = CLLocationManager()
     
     class func getInstance() -> RegionsPool {
         return singlePool
+    }
+    
+    private override init() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.delegate = BeaconStorage.getInstance()
     }
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
@@ -73,13 +75,15 @@ class RegionsPool: NSObject {
         
         region.name = name
         region.uuid = uuid
+        startMonitoringRegion(region)
         saveContext()
         updateFetchResult()
     }
     
     func removeObjectAtIndex(indexPath: NSIndexPath) {
-        let object = fetchedResultsController.objectAtIndexPath(indexPath) as! RegionInfo
-        self.managedObjectContext.deleteObject(object)
+        let region = fetchedResultsController.objectAtIndexPath(indexPath) as! RegionInfo
+        stopMonitoringRegion(region)
+        self.managedObjectContext.deleteObject(region)
         saveContext()
         updateFetchResult()
     }
@@ -103,49 +107,33 @@ class RegionsPool: NSObject {
             }
         }
     }
-//    func hasUUID(uuid: NSUUID) -> Bool {
-//        print(uuid.description)
-//        fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "uuid == %@", uuid.description)
-//        if fetchedResultsController.s
-//        return beaconsUDIDs.contains(uuid)
-//    }
-//
-
-//
-//    func removeBeaconUUID(uuid: NSUUID) {
-//        if let index = beaconsUDIDs.indexOf(uuid){
-//            beaconsUDIDs.removeAtIndex(index)
-//            stopMonitoringBeacon(uuid)
-//        }
-//    }
-//    
-//    func startMonitorinBeacon(uuid: NSUUID){
-//        let beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "iBeaconsManager")
-//        locationManager.startMonitoringForRegion(beaconRegion)
-//        locationManager.startRangingBeaconsInRegion(beaconRegion)
-//    }
-//    
-//    func stopMonitoringBeacon(uuid: NSUUID) {
-//        let beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "iBeaconsManager")
-//        locationManager.stopMonitoringForRegion(beaconRegion)
-//        locationManager.stopRangingBeaconsInRegion(beaconRegion)
-//    }
+    
+    func startMonitoringCurrentRegions() {
+        updateFetchResult()
+        for region in fetchedResultsController.fetchedObjects as! [RegionInfo]{
+            startMonitoringRegion(region)
+        }
+    }
+    
+    private func startMonitoringRegion(regionInfo: RegionInfo) {
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: regionInfo.uuid)!, identifier: regionInfo.name)
+        locationManager.startMonitoringForRegion(beaconRegion)
+        locationManager.startRangingBeaconsInRegion(beaconRegion)
+    }
+    
+    private func stopMonitoringRegion(regionInfo: RegionInfo) {
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: regionInfo.uuid)!, identifier: regionInfo.name)
+        locationManager.stopMonitoringForRegion(beaconRegion)
+        locationManager.stopRangingBeaconsInRegion(beaconRegion)
+    }
+    
+    func stopMonitoringCurrentRegions() {
+//        updateFetchResult()
+        for region in fetchedResultsController.fetchedObjects as! [RegionInfo]{
+            startMonitoringRegion(region)
+        }
+    }
 }
-//
-//extension BeaconsPool: CLLocationManagerDelegate{
-//    
-//    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-//        if beacons.count > 0 {
-//            print(beacons.first)
-//        }
-//    }
-//    
-//    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-//        if let beaconRegion = region as? CLBeaconRegion {
-////            print(beaconRegion.)
-//        }
-//    }
-//}
 
 extension RegionsPool: NSFetchedResultsControllerDelegate {
     

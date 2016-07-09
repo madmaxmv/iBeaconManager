@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '733DEE9C83E74B29549E8894'
+               BlueprintIdentifier = '2342E0D4259CCCE213AF9A2BF5CB4381'
                BlueprintName = 'hndlSegue'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'hndlSegue.framework'>
