@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 import CoreData
 
+/// Хранит данные обо всех регионах пользователя.
 class RegionsPool: NSObject {
     
     static private let singlePool = RegionsPool()
@@ -108,7 +109,7 @@ class RegionsPool: NSObject {
         }
     }
     
-    func startMonitoringCurrentRegions() {
+    func startMonitoringSavedRegions() {
         updateFetchResult()
         for region in fetchedResultsController.fetchedObjects as! [RegionInfo]{
             startMonitoringRegion(region)

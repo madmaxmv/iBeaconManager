@@ -16,6 +16,17 @@ class BeaconStorage: NSObject {
     /// Маяки, которые находятся в зоне видимости пользователя, но он их не сохранил.
     var otherBeacons = [CLBeacon]()
     
+    /// Количество сохраненных маяков в зане видимости.
+    var storedBeaconsInSight: Int {
+        var count = 0
+        for beacon in storedBeacons where beacon.isInSight {
+            count += 1
+        }
+        return count
+    }
+    
+    weak var delegate: BeaconsStorageDelegate?
+    
     static private let singleStorage = BeaconStorage()
     
     class func getInstance() -> BeaconStorage {
@@ -31,8 +42,16 @@ class BeaconStorage: NSObject {
         
     }
     
+    /// Метод сохраняет маяк в storedBeacons
     func keepBeaconInStorage() {
         
+    }
+    
+    func getBeaconForIndexPath(indexPath: NSIndexPath) -> CLBeacon {
+        if indexPath.section == 0 {
+            return storedBeacons[indexPath.row].info
+        }
+        return otherBeacons[indexPath.row]
     }
     
     func getStoredBeaconItem(forBeacon beacon: CLBeacon) -> BeaconItem? {
@@ -64,5 +83,6 @@ extension BeaconStorage: CLLocationManagerDelegate {
                 self.otherBeacons.append(beacon)
             }
         }
+        delegate?.updateBeaconsData()
     }
 }
