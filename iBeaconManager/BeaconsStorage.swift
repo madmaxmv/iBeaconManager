@@ -10,10 +10,11 @@ import Foundation
 import CoreLocation
 
 class BeaconStorage: NSObject {
+    /// Сохраненные пользователем маячки.
+    var storedBeacons: [BeaconItem]
     
-    var myBeacons = [BeaconItem]()
-    
-    var anoverBeacons = [CLBeacon]()
+    /// Маяки, которые находятся в зоне видимости пользователя, но он их не сохранил.
+    var otherBeacons = [CLBeacon]()
     
     static private let singleStorage = BeaconStorage()
     
@@ -23,12 +24,24 @@ class BeaconStorage: NSObject {
     
     private override init() {
         let userDefaults = NSUserDefaults.standardUserDefaults()
+        storedBeacons = [BeaconItem]()
+        if let items = userDefaults.arrayForKey("SavedBeacons") as? [BeaconItem] {
+            storedBeacons.appendContentsOf(items)
+        }
         
-        myBeacons = userDefaults.arrayForKey("SavedBeacons") as! [BeaconItem]
     }
     
     func keepBeaconInStorage() {
         
+    }
+    
+    func getStoredBeaconItem(forBeacon beacon: CLBeacon) -> BeaconItem? {
+        for item in storedBeacons {
+            if item == beacon {
+                return item
+            }
+        }
+        return nil
     }
 }
 
@@ -42,8 +55,14 @@ extension BeaconStorage: CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        self.otherBeacons.removeAll()
+        
         for beacon in beacons {
-            print(beacon.accuracy)
+            if let savedBeacon = getStoredBeaconItem(forBeacon: beacon) {
+                savedBeacon.info = beacon
+            } else {
+                self.otherBeacons.append(beacon)
+            }
         }
     }
 }

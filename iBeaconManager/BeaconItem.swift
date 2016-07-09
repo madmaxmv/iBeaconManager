@@ -12,8 +12,10 @@ import CoreLocation
 class BeaconItem: NSObject, NSCoding {
     /// Имя конкретного маячка.
     var name: String!
-    /// Информация о маячке
+    /// Информация о маячке.
     var info: CLBeacon
+    
+    var isInSight: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObjectForKey("beaconName") as! String
@@ -24,4 +26,19 @@ class BeaconItem: NSObject, NSCoding {
         aCoder.encodeObject(name, forKey: "beaconName")
         aCoder.encodeObject(info, forKey: "beaconInfo")
     }
+    
+    func beaconIsInSight() {
+        isInSight = true
+    }
+    
+    func beaconIsntInSight() {
+        isInSight = false
+    }
+}
+
+func ==(left: BeaconItem, right: CLBeacon) -> Bool {
+    let result = left.info.proximityUUID == right.proximityUUID &&
+                 left.info.major == right.major &&
+                 left.info.minor == right.minor
+    return result
 }
