@@ -23,7 +23,6 @@ class RegionsPool: NSObject {
     
     private override init() {
         locationManager.requestAlwaysAuthorization()
-        locationManager.delegate = BeaconStorage.getInstance()
     }
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
@@ -109,11 +108,12 @@ class RegionsPool: NSObject {
         }
     }
     
-    func startMonitoringSavedRegions() {
+    func startMonitoringRegions() {
         updateFetchResult()
         for region in fetchedResultsController.fetchedObjects as! [RegionInfo]{
             startMonitoringRegion(region)
         }
+        locationManager.delegate = BeaconStorage.getInstance()
     }
     
     private func startMonitoringRegion(regionInfo: RegionInfo) {
@@ -128,11 +128,11 @@ class RegionsPool: NSObject {
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
     }
     
-    func stopMonitoringCurrentRegions() {
-//        updateFetchResult()
+    func stopMonitoringRegions() {
         for region in fetchedResultsController.fetchedObjects as! [RegionInfo]{
-            startMonitoringRegion(region)
+            stopMonitoringRegion(region)
         }
+        locationManager.delegate = nil
     }
 }
 

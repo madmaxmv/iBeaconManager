@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import hndlSegue
 
 class iBeaconsController: UITableViewController {
 
@@ -16,13 +17,17 @@ class iBeaconsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        regionPool.startMonitoringSavedRegions()
         beaconsStorage.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+         regionPool.startMonitoringRegions()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        regionPool.stopMonitoringRegions()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -62,5 +67,29 @@ class iBeaconsController: UITableViewController {
 extension iBeaconsController: BeaconsStorageDelegate {
     func updateBeaconsData() {
         tableView.reloadData()
+    }
+    
+    func canSaveBeaconInStorage(beacon: CLBeacon) -> Bool {
+        regionPool.stopMonitoringRegions()
+        performSegueWithIdentifier("SaveBeacon", sender: beacon as AnyObject) { segue, sender in
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! BeaconDetailController
+            
+            controller.delegate = self
+            controller.beacon = sender as! CLBeacon
+        }
+        return false
+    }
+}
+
+extension iBeaconsController: BeaconDetailControllerDelegate {
+    func beaconDetailControllerDidCancel() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func beaconDetailControllerDidSaveNewBeacon(beacon: BeaconItem) {
+        beaconsStorage.keepBeaconInStorage(beacon)
+        tableView.reloadData()
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

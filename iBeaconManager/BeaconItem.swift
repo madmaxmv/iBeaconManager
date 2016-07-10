@@ -13,9 +13,12 @@ class BeaconItem: NSObject, NSCoding {
     /// Имя конкретного маячка.
     var name: String!
     /// Информация о маячке.
-    var info: CLBeacon
+    var info: CLBeacon!
     
     var isInSight: Bool = false
+    
+    required override init() {
+    }
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObjectForKey("beaconName") as! String

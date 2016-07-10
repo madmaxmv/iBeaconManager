@@ -6,7 +6,7 @@
 //  Copyright © 2016 Maxim. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import CoreLocation
 
 class BeaconStorage: NSObject {
@@ -15,15 +15,6 @@ class BeaconStorage: NSObject {
     
     /// Маяки, которые находятся в зоне видимости пользователя, но он их не сохранил.
     var otherBeacons = [CLBeacon]()
-    
-    /// Количество сохраненных маяков в зане видимости.
-    var storedBeaconsInSight: Int {
-        var count = 0
-        for beacon in storedBeacons where beacon.isInSight {
-            count += 1
-        }
-        return count
-    }
     
     weak var delegate: BeaconsStorageDelegate?
     
@@ -36,17 +27,25 @@ class BeaconStorage: NSObject {
     private override init() {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         storedBeacons = [BeaconItem]()
-        if let items = userDefaults.arrayForKey("SavedBeacons") as? [BeaconItem] {
-            storedBeacons.appendContentsOf(items)
+        if let storedData = userDefaults.objectForKey("SavedBeacons") as? NSData{
+            if let items = NSKeyedUnarchiver.unarchiveObjectWithData(storedData) as? [BeaconItem] {
+              storedBeacons.appendContentsOf(items)
+            }
         }
         
     }
     
     /// Метод сохраняет маяк в storedBeacons
-    func keepBeaconInStorage() {
-        
+    func keepBeaconInStorage(beacon: BeaconItem) {
+        let usrDef = NSUserDefaults.standardUserDefaults()
+        storedBeacons.append(beacon)
+        let storedData = NSKeyedArchiver.archivedDataWithRootObject(storedBeacons)
+      
+        usrDef.setObject(storedData, forKey: "SavedBeacons")
+        usrDef.synchronize()
     }
     
+    /// Метод возвращает информацю о маяке по заданному индексу таблицы.
     func getBeaconForIndexPath(indexPath: NSIndexPath) -> CLBeacon {
         if indexPath.section == 0 {
             return storedBeacons[indexPath.row].info
@@ -61,6 +60,14 @@ class BeaconStorage: NSObject {
             }
         }
         return nil
+    }
+    
+    func saveBeaconIfNeed() {
+        for beacon in otherBeacons {
+            if beacon.accuracy < 0.05 {
+                delegate?.canSaveBeaconInStorage(beacon)
+            }
+        }
     }
 }
 
@@ -84,5 +91,6 @@ extension BeaconStorage: CLLocationManagerDelegate {
             }
         }
         delegate?.updateBeaconsData()
+        saveBeaconIfNeed()
     }
 }

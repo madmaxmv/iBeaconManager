@@ -15,6 +15,7 @@
 		943334811D25CE020012BF8C /* AddRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943334801D25CE020012BF8C /* AddRegionViewController.swift */; };
 		947AAB511D31530600095377 /* BeaconItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB501D31530600095377 /* BeaconItem.swift */; };
 		947AAB531D3181BE00095377 /* BeaconsStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB521D3181BE00095377 /* BeaconsStorageDelegate.swift */; };
+		947AAB551D32498900095377 /* BeaconDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB541D32498900095377 /* BeaconDetailController.swift */; };
 		94F0D4A61D1D373300EBF14B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A51D1D373300EBF14B /* AppDelegate.swift */; };
 		94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */; };
 		94F0D4AB1D1D373300EBF14B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4A91D1D373300EBF14B /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		943334801D25CE020012BF8C /* AddRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRegionViewController.swift; sourceTree = "<group>"; };
 		947AAB501D31530600095377 /* BeaconItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconItem.swift; sourceTree = "<group>"; };
 		947AAB521D3181BE00095377 /* BeaconsStorageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconsStorageDelegate.swift; sourceTree = "<group>"; };
+		947AAB541D32498900095377 /* BeaconDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconDetailController.swift; sourceTree = "<group>"; };
 		94F0D4A21D1D373300EBF14B /* iBeaconManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0D4A51D1D373300EBF14B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconsController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */,
+				947AAB541D32498900095377 /* BeaconDetailController.swift */,
 				9414CA271D1FC29300C08C6D /* RegionsController.swift */,
 				943334801D25CE020012BF8C /* AddRegionViewController.swift */,
 			);
@@ -389,6 +392,7 @@
 			files = (
 				94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */,
 				9414CA281D1FC29300C08C6D /* RegionsController.swift in Sources */,
+				947AAB551D32498900095377 /* BeaconDetailController.swift in Sources */,
 				947AAB531D3181BE00095377 /* BeaconsStorageDelegate.swift in Sources */,
 				9414CA3C1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift in Sources */,
 				9414CA3D1D1FF05500C08C6D /* RegionInfo.swift in Sources */,
