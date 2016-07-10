@@ -6,11 +6,7 @@
 //  Copyright © 2016 Maxim. All rights reserved.
 //
 
-//import Foundation
-import CoreLocation
-
 protocol  BeaconsStorageDelegate: class {
-    /// Метод делегата, которому необходимо обновить данные.
-    func updateBeaconsData()
-    func canSaveBeaconInStorage(beacon: CLBeacon) -> Bool
+    func newBeaconDetected()
+    func canSaveBeaconInStorage(beacon: BeaconItem) -> Bool
 }

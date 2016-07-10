@@ -21,15 +21,16 @@ class BeaconDetailController: UITableViewController {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var minorLabel: UILabel!
     
-    var beacon: CLBeacon!
+    var beacon: BeaconItem!
     
     weak var delegate: BeaconDetailControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UUIDLabel.text = beacon.proximityUUID.UUIDString
-        majorLabel.text = beacon.major.stringValue
-        minorLabel.text = beacon.minor.stringValue
+        beaconNameTextField.placeholder = beacon.name
+        UUIDLabel.text = beacon.info.proximityUUID.UUIDString
+        majorLabel.text = beacon.info.major.stringValue
+        minorLabel.text = beacon.info.minor.stringValue
         
         let tapAnyWhere = UITapGestureRecognizer(target: self, action: #selector(BeaconDetailController.dismissKeyboard))
         tapAnyWhere.cancelsTouchesInView = false // позволит обрабатывать дальнейшие события
@@ -41,12 +42,9 @@ class BeaconDetailController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        let beaconItem = BeaconItem()
-        beaconItem.name = beaconNameTextField.text
-        beaconItem.info = beacon
-        beaconItem.isInSight = true
-        
-        delegate.beaconDetailControllerDidSaveNewBeacon(beaconItem)
+        beacon.name = beaconNameTextField.text!
+        beacon.isInSight = true
+        delegate.beaconDetailControllerDidSaveNewBeacon(beacon)
     }
  
     func dismissKeyboard() {

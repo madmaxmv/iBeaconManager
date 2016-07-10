@@ -31,26 +31,17 @@ class iBeaconsController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+       return beaconsStorage.noEmptyStorageCount
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Секций может быть две. Первая с маяками которые были сохранены пользователем.
         // Вторая со всеми маяками, находящимися в зоне видимости.
-        if section == 0 {
-            return beaconsStorage.storedBeacons.count
-        }
-        return beaconsStorage.otherBeacons.count
+        return beaconsStorage.beaconsCountInStorageForSection(section)
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            if beaconsStorage.storedBeacons.isEmpty {
-                return nil
-            }
-            return "Сохраненные"
-        }
-        return "Доступные"
+        return beaconsStorage.storageDescriptionForSection(section)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -58,25 +49,42 @@ class iBeaconsController: UITableViewController {
         
         let beacon = beaconsStorage.getBeaconForIndexPath(indexPath) 
         
-        cell.textLabel?.text = "iBeacon"
-        cell.detailTextLabel?.text = beacon.accuracy.description
+        beacon.observer = cell
+        cell.textLabel?.text = beacon.name
+        cell.detailTextLabel?.text = beacon.info.accuracy.description
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if !beaconsStorage.storedBeacons.isEmpty && indexPath.section == 0 {
+            return true
+        }
+        return false
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            beaconsStorage.removeBeaconFormStoredWithIndexPath(indexPath)
+            tableView.reloadData()
+        }
     }
 }
 
 extension iBeaconsController: BeaconsStorageDelegate {
-    func updateBeaconsData() {
+
+    func newBeaconDetected() {
         tableView.reloadData()
     }
     
-    func canSaveBeaconInStorage(beacon: CLBeacon) -> Bool {
+    func canSaveBeaconInStorage(beacon: BeaconItem) -> Bool {
         regionPool.stopMonitoringRegions()
         performSegueWithIdentifier("SaveBeacon", sender: beacon as AnyObject) { segue, sender in
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! BeaconDetailController
             
             controller.delegate = self
-            controller.beacon = sender as! CLBeacon
+            controller.beacon = sender as! BeaconItem
         }
         return false
     }

@@ -6,14 +6,20 @@
 //  Copyright © 2016 Maxim. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 class BeaconItem: NSObject, NSCoding {
     /// Имя конкретного маячка.
-    var name: String!
+    var name: String = "iBeacon"
     /// Информация о маячке.
-    var info: CLBeacon!
+    var info: CLBeacon! {
+        willSet {
+            observer?.detailTextLabel?.text = info.accuracy.description
+        }
+    }
+    
+    weak var observer: UITableViewCell?
     
     var isInSight: Bool = false
     
@@ -36,6 +42,10 @@ class BeaconItem: NSObject, NSCoding {
     
     func beaconIsntInSight() {
         isInSight = false
+    }
+    
+    deinit {
+        print("deinit beacon")
     }
 }
 

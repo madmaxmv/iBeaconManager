@@ -6,7 +6,6 @@
 //  Copyright © 2016 Maxim. All rights reserved.
 //
 
-//import Foundation
 import CoreLocation
 
 class BeaconStorage: NSObject {
@@ -14,10 +13,23 @@ class BeaconStorage: NSObject {
     var storedBeacons: [BeaconItem]
     
     /// Маяки, которые находятся в зоне видимости пользователя, но он их не сохранил.
-    var otherBeacons = [CLBeacon]()
+    var otherBeacons = [BeaconItem]()
     
+    /// Делегат.
     weak var delegate: BeaconsStorageDelegate?
     
+    /// Возвращает количество не пустых массивов с маяками
+    /// Если есть сохраненные и в зоне видимости, то 2
+    /// Если оба массива пусты, то 0. Иначе 1.
+    var noEmptyStorageCount: Int {
+        if (!storedBeacons.isEmpty && !otherBeacons.isEmpty) {
+            return 2
+        } else if (storedBeacons.isEmpty && otherBeacons.isEmpty) {
+            return 0
+        }
+        return 1
+    }
+
     static private let singleStorage = BeaconStorage()
     
     class func getInstance() -> BeaconStorage {
@@ -32,29 +44,68 @@ class BeaconStorage: NSObject {
               storedBeacons.appendContentsOf(items)
             }
         }
-        
     }
     
-    /// Метод сохраняет маяк в storedBeacons
+    /// Возвращает количества маяков в соотвествующем массиве для секции таблицы.
+    func beaconsCountInStorageForSection(section: Int) -> Int {
+        if section == 0 && !storedBeacons.isEmpty {
+            return storedBeacons.count
+        }
+        return otherBeacons.count
+    }
+    
+    /// Возвращает название хранилища маяков по секции таблицы.
+    func storageDescriptionForSection(section: Int) -> String {
+        if section == 0 && !storedBeacons.isEmpty {
+            return "Сохраненные"
+        }
+        return "Доступные"
+    }
+    
+    /// Метод сохраняет маяк в массив сохраненных пользователем маяков (storedBeacons).
     func keepBeaconInStorage(beacon: BeaconItem) {
         let usrDef = NSUserDefaults.standardUserDefaults()
         storedBeacons.append(beacon)
+        removeBeaconFromOthers(beacon)
+        
         let storedData = NSKeyedArchiver.archivedDataWithRootObject(storedBeacons)
       
         usrDef.setObject(storedData, forKey: "SavedBeacons")
         usrDef.synchronize()
     }
     
+    /// Метод удаляет маяк из списка сохраненных.
+    func removeBeaconFormStoredWithIndexPath(indexPath: NSIndexPath) {
+        let usrDef = NSUserDefaults.standardUserDefaults()
+        storedBeacons.removeAtIndex(indexPath.row)
+        let storedData = NSKeyedArchiver.archivedDataWithRootObject(storedBeacons)
+        
+        usrDef.setObject(storedData, forKey: "SavedBeacons")
+        usrDef.synchronize()
+    }
+    
     /// Метод возвращает информацю о маяке по заданному индексу таблицы.
-    func getBeaconForIndexPath(indexPath: NSIndexPath) -> CLBeacon {
-        if indexPath.section == 0 {
-            return storedBeacons[indexPath.row].info
+    func getBeaconForIndexPath(indexPath: NSIndexPath) -> BeaconItem {
+        if indexPath.section == 0 && !storedBeacons.isEmpty{
+            return storedBeacons[indexPath.row]
         }
         return otherBeacons[indexPath.row]
     }
     
-    func getStoredBeaconItem(forBeacon beacon: CLBeacon) -> BeaconItem? {
-        for item in storedBeacons {
+    private func removeBeaconFromOthers(beacon: BeaconItem) {
+        var index = 0
+        for item in otherBeacons {
+            if beacon == item.info {
+                break
+            }
+            index += 1
+        }
+        otherBeacons.removeAtIndex(index)
+    }
+    
+    /// Ищет beacon в массиве, если находит то возвращает его.
+    private func getBeaconItem(beacon: CLBeacon, inStorage storage: [BeaconItem]) -> BeaconItem? {
+        for item in storage {
             if item == beacon {
                 return item
             }
@@ -62,9 +113,9 @@ class BeaconStorage: NSObject {
         return nil
     }
     
-    func saveBeaconIfNeed() {
+    private func saveBeaconIfNeed() {
         for beacon in otherBeacons {
-            if beacon.accuracy < 0.05 {
+            if !beacon.info.accuracy.isSignMinus && beacon.info.accuracy < 0.05 {
                 delegate?.canSaveBeaconInStorage(beacon)
             }
         }
@@ -81,16 +132,19 @@ extension BeaconStorage: CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        self.otherBeacons.removeAll()
         
         for beacon in beacons {
-            if let savedBeacon = getStoredBeaconItem(forBeacon: beacon) {
+            if let savedBeacon = getBeaconItem(beacon, inStorage: storedBeacons) {
                 savedBeacon.info = beacon
+            } else if let otherBeacon = getBeaconItem(beacon, inStorage: otherBeacons){
+                otherBeacon.info = beacon
             } else {
-                self.otherBeacons.append(beacon)
+                let newBeacon = BeaconItem()
+                newBeacon.info = beacon
+                otherBeacons.append(newBeacon)
+                delegate?.newBeaconDetected()
             }
         }
-        delegate?.updateBeaconsData()
         saveBeaconIfNeed()
     }
 }
