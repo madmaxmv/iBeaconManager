@@ -15,11 +15,11 @@ class BeaconItem: NSObject, NSCoding {
     /// Информация о маячке.
     var info: CLBeacon! {
         willSet {
-            observer?.detailTextLabel?.text = info.accuracy.description
+            observer?.updateDataInCell()
         }
     }
     
-    weak var observer: UITableViewCell?
+    weak var observer: BeaconCellData?
     
     var isInSight: Bool = false
     

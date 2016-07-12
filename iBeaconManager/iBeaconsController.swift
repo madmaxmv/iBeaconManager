@@ -18,6 +18,11 @@ class iBeaconsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         beaconsStorage.delegate = self
+        
+        let cellNib = UINib(nibName: "BeaconCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "BeaconCell")
+        tableView.rowHeight = 110
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -45,15 +50,15 @@ class iBeaconsController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BeaconCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("BeaconCell", forIndexPath: indexPath) as? BeaconViewCell
         
-        let beacon = beaconsStorage.getBeaconForIndexPath(indexPath) 
+        let beacon = beaconsStorage.getBeaconForIndexPath(indexPath)
         
+        cell!.beaconItem = beacon
         beacon.observer = cell
-        cell.textLabel?.text = beacon.name
-        cell.detailTextLabel?.text = beacon.info.accuracy.description
+        cell?.updateDataInCell()
         
-        return cell
+        return cell!
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
