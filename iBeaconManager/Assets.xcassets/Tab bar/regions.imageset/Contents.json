@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "regions30.png",
+      "filename" : "regions32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "regions60.png",
+      "filename" : "regions64.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "regions90.png",
+      "filename" : "regions96.png",
       "scale" : "3x"
     }
   ],
