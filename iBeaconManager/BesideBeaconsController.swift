@@ -1,33 +1,32 @@
 //
-//  ViewController.swift
+//  BesideBeaconsController.swift
 //  iBeaconManager
 //
-//  Created by Максим on 24.06.16.
+//  Created by Максим on 31.07.16.
 //  Copyright © 2016 Maxim. All rights reserved.
 //
 
 import UIKit
-import CoreLocation
-import hndlSegue
 
-class iBeaconsController: UITableViewController {
+class BesideBeaconsController: UITableViewController {
 
     private var beaconsStorage = BeaconStorage.getInstance()
     private var regionPool = RegionsPool.getInstance()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         beaconsStorage.delegate = self
         
+        self.title = NSLocalizedString("StoredBeaconsController.title", comment: "Saved beacons")
         let cellNib = UINib(nibName: "BeaconCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "BeaconCell")
-        tableView.rowHeight = 110
+        tableView.rowHeight = UITableViewAutomaticDimension
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-         regionPool.startMonitoringRegions()
+        regionPool.startMonitoringRegions()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -36,23 +35,19 @@ class iBeaconsController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-       return beaconsStorage.noEmptyStorageCount
+        return (beaconsStorage.countOfAvailableBeacons != 0)
+            ? 1
+            : 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Секций может быть две. Первая с маяками которые были сохранены пользователем.
-        // Вторая со всеми маяками, находящимися в зоне видимости.
-        return beaconsStorage.beaconsCountInStorageForSection(section)
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return beaconsStorage.storageDescriptionForSection(section)
+        return beaconsStorage.countOfAvailableBeacons
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BeaconCell", forIndexPath: indexPath) as? BeaconViewCell
         
-        let beacon = beaconsStorage.getBeaconForIndexPath(indexPath)
+        let beacon = beaconsStorage.getAvailableBeaconForIndexPath(indexPath)
         
         cell!.beaconItem = beacon
         beacon.observer = cell
@@ -60,24 +55,11 @@ class iBeaconsController: UITableViewController {
         
         return cell!
     }
-    
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if !beaconsStorage.storedBeacons.isEmpty && indexPath.section == 0 {
-            return true
-        }
-        return false
-    }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            beaconsStorage.removeBeaconFormStoredWithIndexPath(indexPath)
-            tableView.reloadData()
-        }
-    }
 }
 
-extension iBeaconsController: BeaconsStorageDelegate {
 
+extension BesideBeaconsController: BeaconsStorageDelegate {
+    
     func newBeaconDetected() {
         tableView.reloadData()
     }
@@ -95,7 +77,7 @@ extension iBeaconsController: BeaconsStorageDelegate {
     }
 }
 
-extension iBeaconsController: BeaconDetailControllerDelegate {
+extension BesideBeaconsController: BeaconDetailControllerDelegate {
     func beaconDetailControllerDidCancel() {
         dismissViewControllerAnimated(true, completion: nil)
     }

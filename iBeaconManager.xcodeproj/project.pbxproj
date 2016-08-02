@@ -13,13 +13,15 @@
 		9414CA3C1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */; };
 		9414CA3D1D1FF05500C08C6D /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */; };
 		943334811D25CE020012BF8C /* AddRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943334801D25CE020012BF8C /* AddRegionViewController.swift */; };
+		9448E1B11D4E935800B199A4 /* BesideBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9448E1B01D4E935800B199A4 /* BesideBeaconsController.swift */; };
+		9448E1B31D4FE37200B199A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9448E1B21D4FE37200B199A4 /* Localizable.strings */; };
 		947AAB511D31530600095377 /* BeaconItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB501D31530600095377 /* BeaconItem.swift */; };
 		947AAB531D3181BE00095377 /* BeaconsStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB521D3181BE00095377 /* BeaconsStorageDelegate.swift */; };
 		947AAB551D32498900095377 /* BeaconDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB541D32498900095377 /* BeaconDetailController.swift */; };
 		947AAB571D3438A200095377 /* BeaconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947AAB561D3438A200095377 /* BeaconCell.xib */; };
 		947AAB591D34C82E00095377 /* BeaconViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AAB581D34C82E00095377 /* BeaconViewCell.swift */; };
 		94F0D4A61D1D373300EBF14B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A51D1D373300EBF14B /* AppDelegate.swift */; };
-		94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */; };
+		94F0D4A81D1D373300EBF14B /* StoredBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F0D4A71D1D373300EBF14B /* StoredBeaconsController.swift */; };
 		94F0D4AB1D1D373300EBF14B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4A91D1D373300EBF14B /* Main.storyboard */; };
 		94F0D4AD1D1D373300EBF14B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4AC1D1D373300EBF14B /* Assets.xcassets */; };
 		94F0D4B01D1D373300EBF14B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F0D4AE1D1D373300EBF14B /* LaunchScreen.storyboard */; };
@@ -49,6 +51,8 @@
 		9414CA3A1D1FF05500C08C6D /* RegionInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegionInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9414CA3B1D1FF05500C08C6D /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		943334801D25CE020012BF8C /* AddRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRegionViewController.swift; sourceTree = "<group>"; };
+		9448E1B01D4E935800B199A4 /* BesideBeaconsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BesideBeaconsController.swift; sourceTree = "<group>"; };
+		9448E1B21D4FE37200B199A4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		947AAB501D31530600095377 /* BeaconItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconItem.swift; sourceTree = "<group>"; };
 		947AAB521D3181BE00095377 /* BeaconsStorageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconsStorageDelegate.swift; sourceTree = "<group>"; };
 		947AAB541D32498900095377 /* BeaconDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconDetailController.swift; sourceTree = "<group>"; };
@@ -56,7 +60,7 @@
 		947AAB581D34C82E00095377 /* BeaconViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewCell.swift; sourceTree = "<group>"; };
 		94F0D4A21D1D373300EBF14B /* iBeaconManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0D4A51D1D373300EBF14B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconsController.swift; sourceTree = "<group>"; };
+		94F0D4A71D1D373300EBF14B /* StoredBeaconsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredBeaconsController.swift; sourceTree = "<group>"; };
 		94F0D4AA1D1D373300EBF14B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94F0D4AC1D1D373300EBF14B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94F0D4AF1D1D373300EBF14B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,14 +103,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9448E1B71D51386000B199A4 /* BeaconCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BeaconCell;
+			sourceTree = "<group>";
+		};
 		947AAB4C1D31168200095377 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				94F0D4A71D1D373300EBF14B /* iBeaconsController.swift */,
+				94F0D4A71D1D373300EBF14B /* StoredBeaconsController.swift */,
+				9448E1B01D4E935800B199A4 /* BesideBeaconsController.swift */,
 				947AAB541D32498900095377 /* BeaconDetailController.swift */,
 				9414CA271D1FC29300C08C6D /* RegionsController.swift */,
 				943334801D25CE020012BF8C /* AddRegionViewController.swift */,
-				947AAB581D34C82E00095377 /* BeaconViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -135,8 +146,10 @@
 		947AAB4F1D31189600095377 /* Viewes */ = {
 			isa = PBXGroup;
 			children = (
+				9448E1B71D51386000B199A4 /* BeaconCell */,
 				94F0D4A91D1D373300EBF14B /* Main.storyboard */,
 				94F0D4AE1D1D373300EBF14B /* LaunchScreen.storyboard */,
+				947AAB581D34C82E00095377 /* BeaconViewCell.swift */,
 				947AAB561D3438A200095377 /* BeaconCell.xib */,
 			);
 			name = Viewes;
@@ -172,6 +185,7 @@
 				94F0D4A51D1D373300EBF14B /* AppDelegate.swift */,
 				94F0D4AC1D1D373300EBF14B /* Assets.xcassets */,
 				94F0D4B11D1D373300EBF14B /* Info.plist */,
+				9448E1B21D4FE37200B199A4 /* Localizable.strings */,
 			);
 			path = iBeaconManager;
 			sourceTree = "<group>";
@@ -283,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9448E1B31D4FE37200B199A4 /* Localizable.strings in Resources */,
 				94F0D4B01D1D373300EBF14B /* LaunchScreen.storyboard in Resources */,
 				94F0D4AD1D1D373300EBF14B /* Assets.xcassets in Resources */,
 				94F0D4AB1D1D373300EBF14B /* Main.storyboard in Resources */,
@@ -398,7 +413,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				947AAB591D34C82E00095377 /* BeaconViewCell.swift in Sources */,
-				94F0D4A81D1D373300EBF14B /* iBeaconsController.swift in Sources */,
+				9448E1B11D4E935800B199A4 /* BesideBeaconsController.swift in Sources */,
+				94F0D4A81D1D373300EBF14B /* StoredBeaconsController.swift in Sources */,
 				9414CA281D1FC29300C08C6D /* RegionsController.swift in Sources */,
 				947AAB551D32498900095377 /* BeaconDetailController.swift in Sources */,
 				947AAB531D3181BE00095377 /* BeaconsStorageDelegate.swift in Sources */,

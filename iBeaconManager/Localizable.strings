@@ -1,0 +1,5 @@
+
+//
+// For view controller of saved beacons.
+//
+"StoredBeaconsController.title" = "Saved";

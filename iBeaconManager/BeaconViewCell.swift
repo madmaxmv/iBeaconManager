@@ -22,6 +22,7 @@ class BeaconViewCell: UITableViewCell, BeaconCellData {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selected = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

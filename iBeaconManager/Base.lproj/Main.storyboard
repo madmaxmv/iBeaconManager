@@ -8,11 +8,11 @@
         <!--Beacons-->
         <scene sceneID="dWs-mh-0J3">
             <objects>
-                <tableViewController id="oAS-4M-LjN" customClass="iBeaconsController" customModule="iBeaconManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e3n-c4-SIB">
+                <tableViewController id="oAS-4M-LjN" customClass="StoredBeaconsController" customModule="iBeaconManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e3n-c4-SIB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.84238109717990206" green="1" blue="0.95324601914247553" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="oAS-4M-LjN" id="eWq-kq-cT7"/>
                             <outlet property="delegate" destination="oAS-4M-LjN" id="FDW-lq-Eni"/>
@@ -166,7 +166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KTL-gq-HhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2764" y="-852"/>
+            <point key="canvasLocation" x="2928" y="-352"/>
         </scene>
         <!--Regions-->
         <scene sceneID="AqG-Zx-JgE">
@@ -237,32 +237,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xku-7C-sEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="-852"/>
+            <point key="canvasLocation" x="2182" y="-352"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="U7U-nV-SLO">
             <objects>
-                <tableViewController id="qg4-Wx-dmw" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lg6-H4-sey">
+                <tableViewController id="qg4-Wx-dmw" customClass="BesideBeaconsController" customModule="iBeaconManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lg6-H4-sey">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Z8q-h3-mKI">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z8q-h3-mKI" id="ZI8-c7-6ye">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qg4-Wx-dmw" id="UKS-Is-JgU"/>
                             <outlet property="delegate" destination="qg4-Wx-dmw" id="5w1-n4-Mbs"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Xf7-W9-SXl"/>
+                    <connections>
+                        <segue destination="htD-X6-Wmf" kind="presentation" identifier="SaveBeacon" id="8B7-uk-jyn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueL-o5-OHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -435,7 +428,10 @@
     </scenes>
     <resources>
         <image name="beside" width="32" height="32"/>
-        <image name="regions" width="30" height="30"/>
-        <image name="saved" width="30" height="30"/>
+        <image name="regions" width="32" height="32"/>
+        <image name="saved" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gkt-ab-GfT"/>
+    </inferredMetricsTieBreakers>
 </document>
