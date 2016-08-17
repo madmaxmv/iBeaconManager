@@ -58,14 +58,14 @@
 		947AAB541D32498900095377 /* BeaconDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconDetailController.swift; sourceTree = "<group>"; };
 		947AAB561D3438A200095377 /* BeaconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeaconCell.xib; sourceTree = "<group>"; };
 		947AAB581D34C82E00095377 /* BeaconViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewCell.swift; sourceTree = "<group>"; };
-		94F0D4A21D1D373300EBF14B /* iBeaconManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F0D4A21D1D373300EBF14B /* Beacons Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beacons Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0D4A51D1D373300EBF14B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94F0D4A71D1D373300EBF14B /* StoredBeaconsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredBeaconsController.swift; sourceTree = "<group>"; };
 		94F0D4AA1D1D373300EBF14B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94F0D4AC1D1D373300EBF14B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94F0D4AF1D1D373300EBF14B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94F0D4B11D1D373300EBF14B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94F0D4B61D1D373300EBF14B /* iBeaconManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F0D4B61D1D373300EBF14B /* Beacons Box.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Beacons Box.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F0D4BA1D1D373300EBF14B /* iBeaconManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconManagerTests.swift; sourceTree = "<group>"; };
 		94F0D4BC1D1D373300EBF14B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964E2B55823FC93BA16BC9B2 /* Pods_iBeaconManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iBeaconManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,8 +169,8 @@
 		94F0D4A31D1D373300EBF14B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94F0D4A21D1D373300EBF14B /* iBeaconManager.app */,
-				94F0D4B61D1D373300EBF14B /* iBeaconManagerTests.xctest */,
+				94F0D4A21D1D373300EBF14B /* Beacons Box.app */,
+				94F0D4B61D1D373300EBF14B /* Beacons Box.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,9 +213,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94F0D4A11D1D373300EBF14B /* iBeaconManager */ = {
+		94F0D4A11D1D373300EBF14B /* Beacons Box */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94F0D4BF1D1D373300EBF14B /* Build configuration list for PBXNativeTarget "iBeaconManager" */;
+			buildConfigurationList = 94F0D4BF1D1D373300EBF14B /* Build configuration list for PBXNativeTarget "Beacons Box" */;
 			buildPhases = (
 				72AB620A293EDDA25EE123ED /* [CP] Check Pods Manifest.lock */,
 				94F0D49E1D1D373300EBF14B /* Sources */,
@@ -228,9 +228,9 @@
 			);
 			dependencies = (
 			);
-			name = iBeaconManager;
+			name = "Beacons Box";
 			productName = iBeaconManager;
-			productReference = 94F0D4A21D1D373300EBF14B /* iBeaconManager.app */;
+			productReference = 94F0D4A21D1D373300EBF14B /* Beacons Box.app */;
 			productType = "com.apple.product-type.application";
 		};
 		94F0D4B51D1D373300EBF14B /* iBeaconManagerTests */ = {
@@ -251,7 +251,7 @@
 			);
 			name = iBeaconManagerTests;
 			productName = iBeaconManagerTests;
-			productReference = 94F0D4B61D1D373300EBF14B /* iBeaconManagerTests.xctest */;
+			productReference = 94F0D4B61D1D373300EBF14B /* Beacons Box.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94F0D49D1D1D373300EBF14B /* Build configuration list for PBXProject "iBeaconManager" */;
+			buildConfigurationList = 94F0D49D1D1D373300EBF14B /* Build configuration list for PBXProject "Beacons Box" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -289,7 +289,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94F0D4A11D1D373300EBF14B /* iBeaconManager */,
+				94F0D4A11D1D373300EBF14B /* Beacons Box */,
 				94F0D4B51D1D373300EBF14B /* iBeaconManagerTests */,
 			);
 		};
@@ -445,7 +445,7 @@
 /* Begin PBXTargetDependency section */
 		94F0D4B81D1D373300EBF14B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 94F0D4A11D1D373300EBF14B /* iBeaconManager */;
+			target = 94F0D4A11D1D373300EBF14B /* Beacons Box */;
 			targetProxy = 94F0D4B71D1D373300EBF14B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -561,7 +561,7 @@
 				INFOPLIST_FILE = iBeaconManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.none.madmaxmv.iBeaconManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Beacons Box";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
@@ -577,7 +577,7 @@
 				INFOPLIST_FILE = iBeaconManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.none.madmaxmv.iBeaconManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Beacons Box";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
@@ -591,9 +591,9 @@
 				INFOPLIST_FILE = iBeaconManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.tutu.iBeaconManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Beacons Box";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iBeaconManager.app/iBeaconManager";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beacons Box.app/Beacons Box";
 			};
 			name = Debug;
 		};
@@ -605,16 +605,16 @@
 				INFOPLIST_FILE = iBeaconManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.tutu.iBeaconManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Beacons Box";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iBeaconManager.app/iBeaconManager";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beacons Box.app/Beacons Box";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94F0D49D1D1D373300EBF14B /* Build configuration list for PBXProject "iBeaconManager" */ = {
+		94F0D49D1D1D373300EBF14B /* Build configuration list for PBXProject "Beacons Box" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94F0D4BD1D1D373300EBF14B /* Debug */,
@@ -623,7 +623,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94F0D4BF1D1D373300EBF14B /* Build configuration list for PBXNativeTarget "iBeaconManager" */ = {
+		94F0D4BF1D1D373300EBF14B /* Build configuration list for PBXNativeTarget "Beacons Box" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94F0D4C01D1D373300EBF14B /* Debug */,

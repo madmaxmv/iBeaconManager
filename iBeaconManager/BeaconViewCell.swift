@@ -24,7 +24,7 @@ class BeaconViewCell: UITableViewCell, BeaconCellData {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -32,7 +32,7 @@ class BeaconViewCell: UITableViewCell, BeaconCellData {
     func updateDataInCell() {
         nameLabel.text = beaconItem?.name
         distanceLabel.text = beaconItem?.info.accuracy.description
-        UUIDLabel.text = beaconItem?.info.proximityUUID.uuidString
+        UUIDLabel.text = beaconItem?.info.proximityUUID.UUIDString
         majorLabel.text = beaconItem?.info.major.description
         minorLabel.text = beaconItem?.info.minor.description
     }

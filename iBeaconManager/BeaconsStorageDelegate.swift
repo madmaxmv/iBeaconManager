@@ -8,5 +8,5 @@
 
 protocol  BeaconsStorageDelegate: class {
     func newBeaconDetected()
-    func canSaveBeaconInStorage(_ beacon: BeaconItem) -> Bool
+    func canSaveBeaconInStorage(beacon: BeaconItem) -> Bool
 }

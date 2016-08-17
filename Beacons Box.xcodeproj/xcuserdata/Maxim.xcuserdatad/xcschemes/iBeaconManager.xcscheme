@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "94F0D4A11D1D373300EBF14B"
-               BuildableName = "iBeaconManager.app"
-               BlueprintName = "iBeaconManager"
-               ReferencedContainer = "container:iBeaconManager.xcodeproj">
+               BuildableName = "Beacons Box.app"
+               BlueprintName = "Beacons Box"
+               ReferencedContainer = "container:Beacons Box.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "94F0D4B51D1D373300EBF14B"
                BuildableName = "iBeaconManagerTests.xctest"
                BlueprintName = "iBeaconManagerTests"
-               ReferencedContainer = "container:iBeaconManager.xcodeproj">
+               ReferencedContainer = "container:Beacons Box.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94F0D4A11D1D373300EBF14B"
-            BuildableName = "iBeaconManager.app"
-            BlueprintName = "iBeaconManager"
-            ReferencedContainer = "container:iBeaconManager.xcodeproj">
+            BuildableName = "Beacons Box.app"
+            BlueprintName = "Beacons Box"
+            ReferencedContainer = "container:Beacons Box.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94F0D4A11D1D373300EBF14B"
-            BuildableName = "iBeaconManager.app"
-            BlueprintName = "iBeaconManager"
-            ReferencedContainer = "container:iBeaconManager.xcodeproj">
+            BuildableName = "Beacons Box.app"
+            BlueprintName = "Beacons Box"
+            ReferencedContainer = "container:Beacons Box.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94F0D4A11D1D373300EBF14B"
-            BuildableName = "iBeaconManager.app"
-            BlueprintName = "iBeaconManager"
-            ReferencedContainer = "container:iBeaconManager.xcodeproj">
+            BuildableName = "Beacons Box.app"
+            BlueprintName = "Beacons Box"
+            ReferencedContainer = "container:Beacons Box.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -27,13 +27,13 @@ class BeaconItem: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObject(forKey: "beaconName") as! String
-        info = aDecoder.decodeObject(forKey: "beaconInfo") as! CLBeacon
+        name = aDecoder.decodeObjectForKey("beaconName") as! String
+        info = aDecoder.decodeObjectForKey("beaconInfo") as! CLBeacon
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "beaconName")
-        aCoder.encode(info, forKey: "beaconInfo")
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "beaconName")
+        aCoder.encodeObject(info, forKey: "beaconInfo")
     }
     
     func beaconIsInSight() {

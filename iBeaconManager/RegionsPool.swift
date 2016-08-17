@@ -28,10 +28,10 @@ class RegionsPool: NSObject {
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchReqest = NSFetchRequest()
-        let entity = NSEntityDescription.entity(forEntityName: "RegionInfo", in: self.managedObjectContext)
+        let entity = NSEntityDescription.entityForName("RegionInfo", inManagedObjectContext: self.managedObjectContext)
         fetchReqest.entity = entity
         
-        let sortDescriptorByName = SortDescriptor(key: "name", ascending: true)
+        let sortDescriptorByName = NSSortDescriptor(key: "name", ascending: true)
         fetchReqest.sortDescriptors = [sortDescriptorByName]
         
         let fetchedResultsController = NSFetchedResultsController(
@@ -60,19 +60,17 @@ class RegionsPool: NSObject {
         }
     }
     
-    func rowsInSection(_ section: Int) -> Int {
+    func rowsInSection(section: Int) -> Int {
         return fetchedResultsController.sections![section].numberOfObjects
     }
     
-    func getObjectAtIndex(_ indexPath: IndexPath) -> RegionInfo {
-        return fetchedResultsController.object(at: indexPath) as! RegionInfo
+    func getObjectAtIndex(indexPath: NSIndexPath) -> RegionInfo {
+        return fetchedResultsController.objectAtIndexPath(indexPath) as! RegionInfo
     }
     
-    func addObject(_ name: String, withUUID uuid: String) {
+    func addObject(name: String, withUUID uuid: String) {
         
-        let region = NSEntityDescription.insertNewObject(forEntityName: "RegionInfo",
-            into: self.managedObjectContext)
-            as! RegionInfo
+        let region = NSEntityDescription.insertNewObjectForEntityForName("RegionInfo", inManagedObjectContext: self.managedObjectContext) as! RegionInfo
         
         region.name = name
         region.uuid = uuid
@@ -81,8 +79,8 @@ class RegionsPool: NSObject {
         updateFetchResult()
     }
     
-    func removeObjectAtIndex(_ indexPath: IndexPath) {
-        let region = fetchedResultsController.object(at: indexPath) as! RegionInfo
+    func removeObjectAtIndex(indexPath: NSIndexPath) {
+        let region = fetchedResultsController.objectAtIndexPath(indexPath) as! RegionInfo
         stopMonitoringRegion(region)
         self.managedObjectContext.delete(region)
         saveContext()
@@ -117,16 +115,16 @@ class RegionsPool: NSObject {
         locationManager.delegate = BeaconStorage.getInstance()
     }
     
-    private func startMonitoringRegion(_ regionInfo: RegionInfo) {
-        let beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: regionInfo.uuid)!, identifier: regionInfo.name)
-        locationManager.startMonitoring(for: beaconRegion)
-        locationManager.startRangingBeacons(in: beaconRegion)
+    private func startMonitoringRegion(regionInfo: RegionInfo) {
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: regionInfo.uuid)!, identifier: regionInfo.name)
+        locationManager.startMonitoringForRegion(beaconRegion)
+        locationManager.startRangingBeaconsInRegion(beaconRegion)
     }
     
-    private func stopMonitoringRegion(_ regionInfo: RegionInfo) {
-        let beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: regionInfo.uuid)!, identifier: regionInfo.name)
-        locationManager.stopMonitoring(for: beaconRegion)
-        locationManager.stopRangingBeacons(in: beaconRegion)
+    private func stopMonitoringRegion(regionInfo: RegionInfo) {
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: regionInfo.uuid)!, identifier: regionInfo.name)
+        locationManager.stopMonitoringForRegion(beaconRegion)
+        locationManager.stopRangingBeaconsInRegion(beaconRegion)
     }
     
     func stopMonitoringRegions() {

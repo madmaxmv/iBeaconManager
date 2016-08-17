@@ -12,9 +12,6 @@
 		1995D4EB17E1AFECEE93883EC534EE68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		2D4602BB09222E637E3F554180A744E1 /* Pods-iBeaconManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E666F7923F9020B6E2E80E839E9E23BB /* Pods-iBeaconManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AE73C61DBBAB8D3019A759780DD09D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		581FBDF43067E3F4B65675120D6B643E /* Pods-iBeaconManagerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E2897A1C24F3507F9AD484AB6FFF62 /* Pods-iBeaconManagerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		734906816378EB8413444F870EDF6679 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		985E28FF5B1763580208ED4BEF06C329 /* Pods-iBeaconManagerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9C7B2EEFB347964F6680098956D9DE /* Pods-iBeaconManagerTests-dummy.m */; };
 		B15D4003628ECFF4DEA1C4FA7B977C00 /* hndlSegue-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E128B7A60FB456864917B624C8401D53 /* hndlSegue-dummy.m */; };
 		C0580C5E50BC3C9DD8F0E684E57BD8D9 /* hndlSegue-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17706D38FD75581AB0C62BAEBCED0A2E /* hndlSegue-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -42,7 +39,6 @@
 		4ABC8C80F0A7361301DA572CBE618724 /* Pods-iBeaconManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iBeaconManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		673AC96762A057990525050B3DCE3511 /* Pods-iBeaconManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-iBeaconManager.modulemap"; sourceTree = "<group>"; };
 		6C9C7B2EEFB347964F6680098956D9DE /* Pods-iBeaconManagerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iBeaconManagerTests-dummy.m"; sourceTree = "<group>"; };
-		72E8B1CF21CB4A32CFF7A26F7CD7E268 /* Pods_iBeaconManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iBeaconManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77739C0777DE835618E40D4C9F41A92D /* hndlSegue.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = hndlSegue.xcconfig; sourceTree = "<group>"; };
 		8054FA0D0DBA3CDDC2A06D5E14AC6C10 /* hndlSegue-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "hndlSegue-prefix.pch"; sourceTree = "<group>"; };
 		8F519085C09AD9ECF568AEC7C1C4A243 /* Pods-iBeaconManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iBeaconManager-dummy.m"; sourceTree = "<group>"; };
@@ -65,14 +61,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		51FCFD14414700EF33DF4DB3F720B2D0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				734906816378EB8413444F870EDF6679 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		55600F4E1A685A73ACE84BA869DA7CA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,7 +85,6 @@
 			children = (
 				AF31C1156A174558027B4E49BA280217 /* hndlSegue.framework */,
 				AED4BE1E100BA4CC9DC767103A55D592 /* Pods_iBeaconManager.framework */,
-				72E8B1CF21CB4A32CFF7A26F7CD7E268 /* Pods_iBeaconManagerTests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,14 +211,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D45BA541895F4FC620D16F1B8AC76C1C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				581FBDF43067E3F4B65675120D6B643E /* Pods-iBeaconManagerTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -270,23 +249,6 @@
 			productReference = AED4BE1E100BA4CC9DC767103A55D592 /* Pods_iBeaconManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BEE07EE08EB7688EF704C95939B70849 /* Pods-iBeaconManagerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F07B8BE619347BB9C8FF349D1CE4543B /* Build configuration list for PBXNativeTarget "Pods-iBeaconManagerTests" */;
-			buildPhases = (
-				CEA08510EF9F69929BB07BE0EC6B7AA8 /* Sources */,
-				51FCFD14414700EF33DF4DB3F720B2D0 /* Frameworks */,
-				D45BA541895F4FC620D16F1B8AC76C1C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-iBeaconManagerTests";
-			productName = "Pods-iBeaconManagerTests";
-			productReference = 72E8B1CF21CB4A32CFF7A26F7CD7E268 /* Pods_iBeaconManagerTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -315,7 +277,6 @@
 			targets = (
 				2342E0D4259CCCE213AF9A2BF5CB4381 /* hndlSegue */,
 				8DA039A198D0E9597B4EF82F6649CF5B /* Pods-iBeaconManager */,
-				BEE07EE08EB7688EF704C95939B70849 /* Pods-iBeaconManagerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -335,14 +296,6 @@
 			files = (
 				B15D4003628ECFF4DEA1C4FA7B977C00 /* hndlSegue-dummy.m in Sources */,
 				10FE2661042BFCF724BB4A19A73F57B8 /* SegueExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEA08510EF9F69929BB07BE0EC6B7AA8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				985E28FF5B1763580208ED4BEF06C329 /* Pods-iBeaconManagerTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,72 +411,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		8E26397212AF8AE67E19B19D0D6C8A46 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ABC8C80F0A7361301DA572CBE618724 /* Pods-iBeaconManagerTests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-iBeaconManagerTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-iBeaconManagerTests/Pods-iBeaconManagerTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_iBeaconManagerTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		971032BA728C0AAE8A6BED2A0953967F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA1D606175B52ABAD6988A86AE188748 /* Pods-iBeaconManagerTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-iBeaconManagerTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-iBeaconManagerTests/Pods-iBeaconManagerTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_iBeaconManagerTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -658,15 +545,6 @@
 			buildConfigurations = (
 				3CE7BD81CA6406FC16E19562D797D6B6 /* Debug */,
 				3E699A331FA082F922A1555BD224F37B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F07B8BE619347BB9C8FF349D1CE4543B /* Build configuration list for PBXNativeTarget "Pods-iBeaconManagerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				971032BA728C0AAE8A6BED2A0953967F /* Debug */,
-				8E26397212AF8AE67E19B19D0D6C8A46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
