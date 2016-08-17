@@ -31,48 +31,48 @@ class BeaconStorage: NSObject {
     }
     
     private override init() {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userDefaults = UserDefaults.standard()
         savedBeacons = [BeaconItem]()
-        if let storedData = userDefaults.objectForKey("SavedBeacons") as? NSData{
-            if let items = NSKeyedUnarchiver.unarchiveObjectWithData(storedData) as? [BeaconItem] {
-              savedBeacons.appendContentsOf(items)
+        if let storedData = userDefaults.object(forKey: "SavedBeacons") as? Data{
+            if let items = NSKeyedUnarchiver.unarchiveObject(with: storedData) as? [BeaconItem] {
+              savedBeacons.append(contentsOf: items)
             }
         }
     }
     
     
     /// Метод возвращает информацю о сохраненном маяке по заданному индексу таблицы.
-    func getSavedBeaconForIndexPath(indexPath: NSIndexPath) -> BeaconItem {
-        return savedBeacons[indexPath.row]
+    func getSavedBeaconForIndexPath(_ indexPath: IndexPath) -> BeaconItem {
+        return savedBeacons[(indexPath as NSIndexPath).row]
     }
     /// Метод возвращает информацю о доступном маяке по заданному индексу таблицы.
-    func getAvailableBeaconForIndexPath(indexPath: NSIndexPath) -> BeaconItem {
-        return availableBeacons[indexPath.row]
+    func getAvailableBeaconForIndexPath(_ indexPath: IndexPath) -> BeaconItem {
+        return availableBeacons[(indexPath as NSIndexPath).row]
     }
     
     /// Метод сохраняет маяк в массив сохраненных пользователем маяков (savedBeacons).
-    func keepBeaconInStorage(beacon: BeaconItem) {
-        let usrDef = NSUserDefaults.standardUserDefaults()
+    func keepBeaconInStorage(_ beacon: BeaconItem) {
+        let usrDef = UserDefaults.standard()
         savedBeacons.append(beacon)
         removeBeaconFromOthers(beacon)
         
-        let storedData = NSKeyedArchiver.archivedDataWithRootObject(savedBeacons)
+        let storedData = NSKeyedArchiver.archivedData(withRootObject: savedBeacons)
       
-        usrDef.setObject(storedData, forKey: "SavedBeacons")
+        usrDef.set(storedData, forKey: "SavedBeacons")
         usrDef.synchronize()
     }
     
     /// Метод удаляет маяк из списка сохраненных.
-    func removeBeaconWithIndexPathFormSaved(indexPath: NSIndexPath) {
-        let usrDef = NSUserDefaults.standardUserDefaults()
-        savedBeacons.removeAtIndex(indexPath.row)
-        let storedData = NSKeyedArchiver.archivedDataWithRootObject(savedBeacons)
+    func removeBeaconWithIndexPathFormSaved(_ indexPath: IndexPath) {
+        let usrDef = UserDefaults.standard()
+        savedBeacons.remove(at: (indexPath as NSIndexPath).row)
+        let storedData = NSKeyedArchiver.archivedData(withRootObject: savedBeacons)
         
-        usrDef.setObject(storedData, forKey: "SavedBeacons")
+        usrDef.set(storedData, forKey: "SavedBeacons")
         usrDef.synchronize()
     }
 
-    private func removeBeaconFromOthers(beacon: BeaconItem) {
+    private func removeBeaconFromOthers(_ beacon: BeaconItem) {
         var index = 0
         for item in availableBeacons {
             if beacon == item.info {
@@ -80,11 +80,11 @@ class BeaconStorage: NSObject {
             }
             index += 1
         }
-        availableBeacons.removeAtIndex(index)
+        availableBeacons.remove(at: index)
     }
     
     /// Ищет beacon в массиве, если находит то возвращает его.
-    private func getBeaconItem(beacon: CLBeacon, inStorage storage: [BeaconItem]) -> BeaconItem? {
+    private func getBeaconItem(_ beacon: CLBeacon, inStorage storage: [BeaconItem]) -> BeaconItem? {
         for item in storage {
             if item == beacon {
                 return item
@@ -95,7 +95,7 @@ class BeaconStorage: NSObject {
     
     private func saveBeaconIfNeed() {
         for beacon in availableBeacons {
-            if !beacon.info.accuracy.isSignMinus && beacon.info.accuracy < 0.02 {
+            if !beacon.info.accuracy.sign && beacon.info.accuracy < 0.02 {
                 delegate?.canSaveBeaconInStorage(beacon)
             }
         }
@@ -103,15 +103,15 @@ class BeaconStorage: NSObject {
 }
 
 extension BeaconStorage: CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: NSError) {
         print("Failed monitoring region: \(error.description)")
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
         print("Location manager did failed: \(error.description)")
     }
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         
         for beacon in beacons {
             if let savedBeacon = getBeaconItem(beacon, inStorage: savedBeacons) {

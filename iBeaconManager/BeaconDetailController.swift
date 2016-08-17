@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol BeaconDetailControllerDelegate: class {
     func beaconDetailControllerDidCancel()
-    func beaconDetailControllerDidSaveNewBeacon(beacon: BeaconItem)
+    func beaconDetailControllerDidSaveNewBeacon(_ beacon: BeaconItem)
 }
 
 class BeaconDetailController: UITableViewController {
@@ -28,7 +28,7 @@ class BeaconDetailController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         beaconNameTextField.placeholder = beacon.name
-        UUIDLabel.text = beacon.info.proximityUUID.UUIDString
+        UUIDLabel.text = beacon.info.proximityUUID.uuidString
         majorLabel.text = beacon.info.major.stringValue
         minorLabel.text = beacon.info.minor.stringValue
         
@@ -37,11 +37,11 @@ class BeaconDetailController: UITableViewController {
         view.addGestureRecognizer(tapAnyWhere)
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(_ sender: AnyObject) {
         delegate.beaconDetailControllerDidCancel()
     }
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(_ sender: AnyObject) {
         beacon.name = beaconNameTextField.text!
         beacon.isInSight = true
         delegate.beaconDetailControllerDidSaveNewBeacon(beacon)

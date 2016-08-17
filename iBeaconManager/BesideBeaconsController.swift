@@ -19,33 +19,34 @@ class BesideBeaconsController: UITableViewController {
         
         self.title = NSLocalizedString("StoredBeaconsController.title", comment: "Saved beacons")
         let cellNib = UINib(nibName: "BeaconCell", bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "BeaconCell")
+        tableView.register(cellNib, forCellReuseIdentifier: "BeaconCell")
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        tableView.estimatedRowHeight = 110
+//        tableView.rowHeight = 110
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         regionPool.startMonitoringRegions()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         regionPool.stopMonitoringRegions()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return (beaconsStorage.countOfAvailableBeacons != 0)
             ? 1
             : 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return beaconsStorage.countOfAvailableBeacons
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BeaconCell", forIndexPath: indexPath) as? BeaconViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BeaconCell", for: indexPath) as? BeaconViewCell
         
         let beacon = beaconsStorage.getAvailableBeaconForIndexPath(indexPath)
         
@@ -64,7 +65,7 @@ extension BesideBeaconsController: BeaconsStorageDelegate {
         tableView.reloadData()
     }
     
-    func canSaveBeaconInStorage(beacon: BeaconItem) -> Bool {
+    func canSaveBeaconInStorage(_ beacon: BeaconItem) -> Bool {
         regionPool.stopMonitoringRegions()
         performSegueWithIdentifier("SaveBeacon", sender: beacon as AnyObject) { segue, sender in
             let navigationController = segue.destinationViewController as! UINavigationController
@@ -79,12 +80,12 @@ extension BesideBeaconsController: BeaconsStorageDelegate {
 
 extension BesideBeaconsController: BeaconDetailControllerDelegate {
     func beaconDetailControllerDidCancel() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func beaconDetailControllerDidSaveNewBeacon(beacon: BeaconItem) {
+    func beaconDetailControllerDidSaveNewBeacon(_ beacon: BeaconItem) {
         beaconsStorage.keepBeaconInStorage(beacon)
         tableView.reloadData()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

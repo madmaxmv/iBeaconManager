@@ -25,7 +25,7 @@ class RegionsController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addTeam(sender: AnyObject) {
+    @IBAction func addTeam(_ sender: AnyObject) {
         self.performSegueWithIdentifier("AddRegion", sender: nil) { segue, sender in
             let controller = segue.destinationViewController as! AddRegionViewController
             controller.delegate = self
@@ -34,17 +34,17 @@ class RegionsController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return regionsPool.sectionsCount
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return regionsPool.rowsInSection(section)
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RegionCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RegionCell", for: indexPath)
         
         let region = regionsPool.getObjectAtIndex(indexPath)
         cell.textLabel?.text = region.name
@@ -52,22 +52,22 @@ class RegionsController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             regionsPool.removeObjectAtIndex(indexPath)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
 
 extension RegionsController: AddRegionViewControllerDelegate {
-    func addRegion(name: String, withUUID uuid: String) {
+    func addRegion(_ name: String, withUUID uuid: String) {
         regionsPool?.addObject(name, withUUID: uuid)
         tableView.reloadData()
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
 }
