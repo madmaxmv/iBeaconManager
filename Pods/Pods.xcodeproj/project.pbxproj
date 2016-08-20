@@ -259,6 +259,7 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					2342E0D4259CCCE213AF9A2BF5CB4381 = {
+						DevelopmentTeam = 6L2SX9VHNH;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -315,6 +316,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77739C0777DE835618E40D4C9F41A92D /* hndlSegue.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -346,6 +348,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77739C0777DE835618E40D4C9F41A92D /* hndlSegue.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
