@@ -4,25 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-BBox.xcscheme</key>
+		<key>BBox.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>hndlSegue.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2342E0D4259CCCE213AF9A2BF5CB4381</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7BCF3221436E7F1295EAAEE411D05E6C</key>
+		<key>9400600F1D8AE2ED006D3EAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

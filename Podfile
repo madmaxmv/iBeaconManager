@@ -3,11 +3,6 @@ platform :ios, '8.0'
 
 use_frameworks!
 
-target 'iBeaconManager' do
+target ‘BBox’ do
    pod ‘hndlSegue’, ‘> 0.1’
 end
-
-target 'iBeaconManagerTests' do
-
-end
-
