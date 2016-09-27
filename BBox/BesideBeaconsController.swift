@@ -17,7 +17,7 @@ class BesideBeaconsController: UITableViewController {
         super.viewDidLoad()
         beaconsStorage.delegate = self
         
-        self.title = NSLocalizedString("StoredBeaconsController.title", comment: "Saved beacons")
+        self.title = NSLocalizedString("BesideBeaconsController.title", comment: "Beside beacons")
         let cellNib = UINib(nibName: "BeaconCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "BeaconCell")
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -56,7 +56,6 @@ class BesideBeaconsController: UITableViewController {
         return cell!
     }
 }
-
 
 extension BesideBeaconsController: BeaconsStorageDelegate {
     

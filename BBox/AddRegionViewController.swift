@@ -19,9 +19,16 @@ class AddRegionViewController: UITableViewController {
     
     weak var delegate: AddRegionViewControllerDelegate?
     
-    var uuidRegex: NSRegularExpression?
-    var nameFieldValid = false
-    var UUIDFieldValid = false
+    lazy var uuidRegex: NSRegularExpression? = {
+        do {
+            let regex = try NSRegularExpression(pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", options: [.CaseInsensitive])
+            return regex
+        } catch {
+            return nil
+        }
+    }()
+    private var nameFieldValid = false
+    private var UUIDFieldValid = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +54,10 @@ class AddRegionViewController: UITableViewController {
     }
     
     func uuidTextFieldChanged(textField: UITextField) {
-        let numberOfMatches = uuidRegex!.numberOfMatchesInString(textField.text!, options: [.ReportProgress], range: NSMakeRange(0, textField.text!.characters.count))
-        UUIDFieldValid = (numberOfMatches > 0)
-        saveBarButtonItem.enabled = (UUIDFieldValid && nameFieldValid)
+        if let uuidRegEx = uuidRegex {
+            let numberOfMatches = uuidRegEx.numberOfMatchesInString(textField.text!, options: [.ReportProgress], range: NSMakeRange(0, textField.text!.characters.count))
+            UUIDFieldValid = (numberOfMatches > 0)
+            saveBarButtonItem.enabled = (UUIDFieldValid && nameFieldValid)
+        }
     }
 }

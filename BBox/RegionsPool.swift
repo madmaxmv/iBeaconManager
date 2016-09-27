@@ -11,7 +11,7 @@ import CoreLocation
 import CoreData
 
 /// Хранит данные обо всех регионах пользователя.
-class RegionsPool: NSObject {
+class RegionsPool: NSObject, NSFetchedResultsControllerDelegate {
     
     static private let singlePool = RegionsPool()
     var managedObjectContext: NSManagedObjectContext!
@@ -70,45 +70,25 @@ class RegionsPool: NSObject {
     
     func addObject(name: String, withUUID uuid: String) {
         
-        let region = NSEntityDescription.insertNewObjectForEntityForName("Region", inManagedObjectContext: self.managedObjectContext) as! Region
+        let region = NSEntityDescription.insertNewObjectForEntityForName("Region", inManagedObjectContext: managedObjectContext) as! Region
         
         region.name = name
         region.uuid = uuid
         startMonitoringRegion(region)
-        saveContext()
-        updateFetchResult()
+        managedObjectContext.saveContext()
+        fetchedResultsController.update()
     }
     
     func removeObjectAtIndex(indexPath: NSIndexPath) {
         let region = fetchedResultsController.objectAtIndexPath(indexPath) as! Region
         stopMonitoringRegion(region)
         self.managedObjectContext.deleteObject(region)
-        saveContext()
-        updateFetchResult()
-    }
-    
-    func updateFetchResult() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
-        }
-    }
-    
-    func saveContext() {
-        if managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch {
-                let nserror = error as NSError
-                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
-            }
-        }
+        managedObjectContext.saveContext()
+        fetchedResultsController.update()
     }
     
     func startMonitoringRegions() {
-        updateFetchResult()
+        fetchedResultsController.update()
         for region in fetchedResultsController.fetchedObjects as! [Region]{
             startMonitoringRegion(region)
         }
@@ -133,8 +113,4 @@ class RegionsPool: NSObject {
         }
         locationManager.delegate = nil
     }
-}
-
-extension RegionsPool: NSFetchedResultsControllerDelegate {
-    
 }

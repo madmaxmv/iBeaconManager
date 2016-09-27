@@ -20,7 +20,6 @@
 		9400603C1D8AE3C7006D3EAB /* BeaconsStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9400602E1D8AE3C7006D3EAB /* BeaconsStorageDelegate.swift */; };
 		9400603D1D8AE3C7006D3EAB /* BeaconViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9400602F1D8AE3C7006D3EAB /* BeaconViewCell.swift */; };
 		9400603E1D8AE3C7006D3EAB /* BesideBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940060301D8AE3C7006D3EAB /* BesideBeaconsController.swift */; };
-		9400603F1D8AE3C7006D3EAB /* iBeaconList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940060311D8AE3C7006D3EAB /* iBeaconList.swift */; };
 		940060421D8AE3C7006D3EAB /* RegionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940060341D8AE3C7006D3EAB /* RegionsController.swift */; };
 		940060431D8AE3C7006D3EAB /* RegionsPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940060351D8AE3C7006D3EAB /* RegionsPool.swift */; };
 		940060441D8AE3C7006D3EAB /* StoredBeaconsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940060361D8AE3C7006D3EAB /* StoredBeaconsController.swift */; };
@@ -28,6 +27,10 @@
 		9400604D1D8AEF0C006D3EAB /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940060491D8AEF0C006D3EAB /* Region.swift */; };
 		9400604E1D8AEF0C006D3EAB /* Beacon+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9400604A1D8AEF0C006D3EAB /* Beacon+CoreDataProperties.swift */; };
 		9400604F1D8AEF0C006D3EAB /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9400604B1D8AEF0C006D3EAB /* Beacon.swift */; };
+		9415894A1D97D5E200CD380F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 941589491D97D5E200CD380F /* Localizable.strings */; };
+		9415894F1D9AF5A100CD380F /* NSFetchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415894E1D9AF5A100CD380F /* NSFetchResultsController.swift */; };
+		941589511D9AF62E00CD380F /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941589501D9AF62E00CD380F /* NSManagedObjectContext.swift */; };
+		941589531D9AFD8A00CD380F /* Beacon+CLBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941589521D9AFD8A00CD380F /* Beacon+CLBeacon.swift */; };
 		A7C4AF6246E9EF0C3B656480 /* Pods_BBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B7B09AAA22A22B1B62CDD3 /* Pods_BBox.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +51,6 @@
 		9400602E1D8AE3C7006D3EAB /* BeaconsStorageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconsStorageDelegate.swift; sourceTree = "<group>"; };
 		9400602F1D8AE3C7006D3EAB /* BeaconViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewCell.swift; sourceTree = "<group>"; };
 		940060301D8AE3C7006D3EAB /* BesideBeaconsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BesideBeaconsController.swift; sourceTree = "<group>"; };
-		940060311D8AE3C7006D3EAB /* iBeaconList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iBeaconList.swift; sourceTree = "<group>"; };
 		940060341D8AE3C7006D3EAB /* RegionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionsController.swift; sourceTree = "<group>"; };
 		940060351D8AE3C7006D3EAB /* RegionsPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionsPool.swift; sourceTree = "<group>"; };
 		940060361D8AE3C7006D3EAB /* StoredBeaconsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredBeaconsController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,10 @@
 		940060491D8AEF0C006D3EAB /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		9400604A1D8AEF0C006D3EAB /* Beacon+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Beacon+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9400604B1D8AEF0C006D3EAB /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		941589491D97D5E200CD380F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9415894E1D9AF5A100CD380F /* NSFetchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchResultsController.swift; sourceTree = "<group>"; };
+		941589501D9AF62E00CD380F /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
+		941589521D9AFD8A00CD380F /* Beacon+CLBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Beacon+CLBeacon.swift"; sourceTree = "<group>"; };
 		960FDF886C3803EC8107B562 /* Pods-BBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBox.release.xcconfig"; path = "Pods/Target Support Files/Pods-BBox/Pods-BBox.release.xcconfig"; sourceTree = "<group>"; };
 		9DF130AF03A9B8735BB6A051 /* Pods-BBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BBox/Pods-BBox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,13 +99,14 @@
 		940060121D8AE2ED006D3EAB /* BBox */ = {
 			isa = PBXGroup;
 			children = (
+				9415894D1D9AF58500CD380F /* Extension */,
+				9415894C1D97D64800CD380F /* Resources */,
+				9415894B1D97D61F00CD380F /* Supporting Files */,
 				940060471D8AE400006D3EAB /* CoreData */,
 				940060461D8AE3F2006D3EAB /* ViewControllers */,
 				940060451D8AE3D2006D3EAB /* Views */,
 				940060281D8AE36B006D3EAB /* Models */,
 				940060131D8AE2ED006D3EAB /* AppDelegate.swift */,
-				9400601D1D8AE2EE006D3EAB /* Assets.xcassets */,
-				940060221D8AE2EE006D3EAB /* Info.plist */,
 			);
 			path = BBox;
 			sourceTree = "<group>";
@@ -110,8 +117,6 @@
 				9400602C1D8AE3C7006D3EAB /* BeaconItem.swift */,
 				9400602D1D8AE3C7006D3EAB /* BeaconsStorage.swift */,
 				9400602E1D8AE3C7006D3EAB /* BeaconsStorageDelegate.swift */,
-				940060311D8AE3C7006D3EAB /* iBeaconList.swift */,
-				940060341D8AE3C7006D3EAB /* RegionsController.swift */,
 				940060351D8AE3C7006D3EAB /* RegionsPool.swift */,
 			);
 			name = Models;
@@ -134,6 +139,7 @@
 				940060291D8AE3C7006D3EAB /* AddRegionViewController.swift */,
 				9400602B1D8AE3C7006D3EAB /* BeaconDetailController.swift */,
 				940060361D8AE3C7006D3EAB /* StoredBeaconsController.swift */,
+				940060341D8AE3C7006D3EAB /* RegionsController.swift */,
 				940060301D8AE3C7006D3EAB /* BesideBeaconsController.swift */,
 			);
 			name = ViewControllers;
@@ -149,6 +155,33 @@
 				9400601A1D8AE2ED006D3EAB /* BBox.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		9415894B1D97D61F00CD380F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				940060221D8AE2EE006D3EAB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9415894C1D97D64800CD380F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9400601D1D8AE2EE006D3EAB /* Assets.xcassets */,
+				941589491D97D5E200CD380F /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9415894D1D9AF58500CD380F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9415894E1D9AF5A100CD380F /* NSFetchResultsController.swift */,
+				941589501D9AF62E00CD380F /* NSManagedObjectContext.swift */,
+				941589521D9AFD8A00CD380F /* Beacon+CLBeacon.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		97C6C937E3FB00EFBA565EF2 /* Pods */ = {
@@ -231,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9415894A1D97D5E200CD380F /* Localizable.strings in Resources */,
 				940060211D8AE2EE006D3EAB /* LaunchScreen.storyboard in Resources */,
 				9400601E1D8AE2EE006D3EAB /* Assets.xcassets in Resources */,
 				940060191D8AE2ED006D3EAB /* Main.storyboard in Resources */,
@@ -299,9 +333,10 @@
 				9400603E1D8AE3C7006D3EAB /* BesideBeaconsController.swift in Sources */,
 				9400603D1D8AE3C7006D3EAB /* BeaconViewCell.swift in Sources */,
 				9400603C1D8AE3C7006D3EAB /* BeaconsStorageDelegate.swift in Sources */,
+				9415894F1D9AF5A100CD380F /* NSFetchResultsController.swift in Sources */,
+				941589511D9AF62E00CD380F /* NSManagedObjectContext.swift in Sources */,
 				9400603A1D8AE3C7006D3EAB /* BeaconItem.swift in Sources */,
 				940060441D8AE3C7006D3EAB /* StoredBeaconsController.swift in Sources */,
-				9400603F1D8AE3C7006D3EAB /* iBeaconList.swift in Sources */,
 				9400604F1D8AEF0C006D3EAB /* Beacon.swift in Sources */,
 				9400604C1D8AEF0C006D3EAB /* Region+CoreDataProperties.swift in Sources */,
 				940060431D8AE3C7006D3EAB /* RegionsPool.swift in Sources */,
@@ -310,6 +345,7 @@
 				9400601C1D8AE2ED006D3EAB /* BBox.xcdatamodeld in Sources */,
 				940060141D8AE2ED006D3EAB /* AppDelegate.swift in Sources */,
 				9400604E1D8AEF0C006D3EAB /* Beacon+CoreDataProperties.swift in Sources */,
+				941589531D9AFD8A00CD380F /* Beacon+CLBeacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,14 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = NSBundle.mainBundle().URLForResource("RegionsInfo", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("BBox", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("RegionsInfoCoreData.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("BBoxCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)

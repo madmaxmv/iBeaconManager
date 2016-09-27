@@ -14,9 +14,9 @@ import CoreData
 
 extension Beacon {
 
-    @NSManaged var name: String?
-    @NSManaged var major: NSNumber?
-    @NSManaged var minor: NSNumber?
-    @NSManaged var uuid: String?
+    @NSManaged var name:    String!
+    @NSManaged var major:   NSNumber!
+    @NSManaged var minor:   NSNumber!
+    @NSManaged var uuid:    String!
 
 }

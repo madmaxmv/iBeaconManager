@@ -9,9 +9,15 @@
 import UIKit
 import CoreLocation
 
-class BeaconItem: NSObject, NSCoding {
+class BeaconItem {
     /// Имя конкретного маячка.
-    var name: String = "iBeacon"
+    var name: String
+    
+    /// Если маячек сохранен но не в зоне видимости информация о его неизменяемых параметрах:
+    var major: NSNumber
+    var minor: NSNumber
+    var UUID: String
+
     /// Информация о маячке.
     var info: CLBeacon! {
         willSet {
@@ -19,29 +25,22 @@ class BeaconItem: NSObject, NSCoding {
         }
     }
     
+    var humanDistance: String {
+        return ""
+    }
+    
     weak var observer: BeaconCellData?
     
-    var isInSight: Bool = false
-    
-    required override init() {
+    required init(name: String, major: NSNumber, minor: NSNumber, UUID: String) {
+        self.name = name
+        self.major = major
+        self.minor = minor
+        self.UUID = UUID
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObjectForKey("beaconName") as! String
-        info = aDecoder.decodeObjectForKey("beaconInfo") as! CLBeacon
-    }
-    
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: "beaconName")
-        aCoder.encodeObject(info, forKey: "beaconInfo")
-    }
-    
-    func beaconIsInSight() {
-        isInSight = true
-    }
-    
-    func beaconIsntInSight() {
-        isInSight = false
+    convenience init(name: String, beacon: CLBeacon) {
+        self.init(name: name, major: beacon.major, minor: beacon.minor, UUID: beacon.proximityUUID.UUIDString)
+        self.info = beacon
     }
     
     deinit {
