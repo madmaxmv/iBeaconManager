@@ -19,7 +19,7 @@ class BeaconItem {
     var UUID: String
 
     /// Информация о маячке.
-    var info: CLBeacon! {
+    var info: CLBeacon? {
         willSet {
             observer?.updateDataInCell()
         }
@@ -48,9 +48,14 @@ class BeaconItem {
     }
 }
 
+func ==(left: BeaconItem, right: BeaconItem) -> Bool {
+    return (left.UUID == right.UUID)
+        && (left.major.description == right.major.description)
+        && (left.minor.description == right.minor.description)
+}
+
 func ==(left: BeaconItem, right: CLBeacon) -> Bool {
-    let result = left.info.proximityUUID == right.proximityUUID &&
-                 left.info.major == right.major &&
-                 left.info.minor == right.minor
-    return result
+    return (left.UUID == right.proximityUUID.UUIDString)
+        && (left.major.description == right.major.description)
+        && (left.minor.description == right.minor.description)
 }

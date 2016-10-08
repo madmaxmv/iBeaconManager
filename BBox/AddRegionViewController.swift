@@ -1,5 +1,5 @@
 //
-//  AddUUIDViewController.swift
+//  AddRegionViewController.swift
 //  iBeaconManager
 //
 //  Created by Максим on 01.07.16.

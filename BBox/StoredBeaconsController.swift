@@ -17,6 +17,7 @@ class StoredBeaconsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        beaconsStorage.loadBeaconFromStorage()
         beaconsStorage.delegate = self
         
         self.title = NSLocalizedString("StoredBeaconsController.title", comment: "Saved beacons")
@@ -28,7 +29,7 @@ class StoredBeaconsController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-         regionPool.startMonitoringRegions()
+        regionPool.startMonitoringRegions(delegate: beaconsStorage)
     }
     
     override func viewWillDisappear(animated: Bool) {

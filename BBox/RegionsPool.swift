@@ -15,14 +15,15 @@ class RegionsPool: NSObject, NSFetchedResultsControllerDelegate {
     
     static private let singlePool = RegionsPool()
     var managedObjectContext: NSManagedObjectContext!
-    private var locationManager = CLLocationManager()
+    private var locationManager: CLLocationManager
     
     class func getInstance() -> RegionsPool {
         return singlePool
     }
     
     private override init() {
-        locationManager.requestAlwaysAuthorization()
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
     }
     
@@ -87,23 +88,22 @@ class RegionsPool: NSObject, NSFetchedResultsControllerDelegate {
         fetchedResultsController.update()
     }
     
-    func startMonitoringRegions() {
+    func startMonitoringRegions(delegate delegate: CLLocationManagerDelegate) {
         fetchedResultsController.update()
         for region in fetchedResultsController.fetchedObjects as! [Region]{
             startMonitoringRegion(region)
         }
-        locationManager.delegate = BeaconStorage.getInstance()
+        locationManager.delegate = delegate
+        locationManager.activityType = .OtherNavigation
     }
     
     private func startMonitoringRegion(region: Region) {
         let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: region.uuid)!, identifier: region.name)
-        locationManager.startMonitoringForRegion(beaconRegion)
         locationManager.startRangingBeaconsInRegion(beaconRegion)
     }
     
     private func stopMonitoringRegion(region: Region) {
         let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: region.uuid)!, identifier: region.name)
-        locationManager.stopMonitoringForRegion(beaconRegion)
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
     }
     

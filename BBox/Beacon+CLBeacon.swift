@@ -11,13 +11,13 @@ import CoreLocation
 extension Beacon {
     
     func fillingFrom(beaconItem beacon: BeaconItem){
-        self.major = beacon.info.major
-        self.minor = beacon.info.minor
-        self.uuid = beacon.info.proximityUUID.UUIDString
+        self.major = beacon.info!.major
+        self.minor = beacon.info!.minor
+        self.uuid = beacon.info!.proximityUUID.UUIDString
         self.name = beacon.name
     }
     
-    func makeBeaconItem() -> BeaconItem {
+    var asBeaconItem: BeaconItem {
         return BeaconItem(name: name, major: major, minor: minor, UUID: uuid)
     }
 }

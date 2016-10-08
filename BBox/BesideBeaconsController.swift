@@ -26,7 +26,7 @@ class BesideBeaconsController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        regionPool.startMonitoringRegions()
+        regionPool.startMonitoringRegions(delegate: beaconsStorage)
     }
     
     override func viewWillDisappear(animated: Bool) {

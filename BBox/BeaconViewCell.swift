@@ -10,18 +10,18 @@ import UIKit
 
 class BeaconViewCell: UITableViewCell, BeaconCellData {
 
+    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var beaconImageView: UIImageView?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var UUIDLabel: UILabel!
-    @IBOutlet weak var majorLabel: UILabel!
-    @IBOutlet weak var minorLabel: UILabel!
     
     weak var beaconItem: BeaconItem?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cellView.layer.cornerRadius = 10.0
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -31,10 +31,7 @@ class BeaconViewCell: UITableViewCell, BeaconCellData {
     }
     func updateDataInCell() {
         nameLabel.text = beaconItem?.name
-        distanceLabel.text = beaconItem?.info.accuracy.description
-        UUIDLabel.text = beaconItem?.info.proximityUUID.UUIDString
-        majorLabel.text = beaconItem?.info.major.description
-        minorLabel.text = beaconItem?.info.minor.description
+        distanceLabel.text = beaconItem?.info?.accuracy.description
     }
 }
 
