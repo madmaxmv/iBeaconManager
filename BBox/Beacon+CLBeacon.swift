@@ -13,7 +13,7 @@ extension Beacon {
     func fillingFrom(beaconItem beacon: BeaconItem){
         self.major = beacon.info!.major
         self.minor = beacon.info!.minor
-        self.uuid = beacon.info!.proximityUUID.UUIDString
+        self.uuid = beacon.info!.proximityUUID.uuidString
         self.name = beacon.name
     }
     

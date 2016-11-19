@@ -12,8 +12,8 @@ import hndlSegue
 
 class StoredBeaconsController: UITableViewController {
 
-    private var beaconsStorage = BeaconStorage.getInstance()
-    private var regionPool = RegionsPool.getInstance()
+    var beaconsStorage = BeaconStorage.getInstance()
+    var regionPool = RegionsPool.getInstance()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,35 +22,35 @@ class StoredBeaconsController: UITableViewController {
         
         self.title = NSLocalizedString("StoredBeaconsController.title", comment: "Saved beacons")
         let cellNib = UINib(nibName: "BeaconCell", bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "BeaconCell")
+        tableView.register(cellNib, forCellReuseIdentifier: "BeaconCell")
         tableView.estimatedRowHeight = 110
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         regionPool.startMonitoringRegions(delegate: beaconsStorage)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         regionPool.stopMonitoringRegions()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return (beaconsStorage.countOfBeaconsInStorage != 0)
             ? 1
             : 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return beaconsStorage.countOfBeaconsInStorage
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BeaconCell", forIndexPath: indexPath) as? BeaconViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BeaconCell", for: indexPath as IndexPath) as? BeaconViewCell
         
-        let beacon = beaconsStorage.getSavedBeaconForIndexPath(indexPath)
+        let beacon = beaconsStorage.getSavedBeaconForIndexPath(indexPath: indexPath as NSIndexPath)
         
         cell!.beaconItem = beacon
         beacon.observer = cell
@@ -59,9 +59,9 @@ class StoredBeaconsController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            beaconsStorage.removeBeaconWithIndexPathFormSaved(indexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            beaconsStorage.removeBeaconWithIndexPathFormSaved(indexPath: indexPath as NSIndexPath)
             tableView.reloadData()
         }
     }
@@ -76,7 +76,7 @@ extension StoredBeaconsController: BeaconsStorageDelegate {
     func canSaveBeaconInStorage(beacon: BeaconItem) -> Bool {
         regionPool.stopMonitoringRegions()
         performSegueWithIdentifier("SaveBeacon", sender: beacon as AnyObject) { segue, sender in
-            let navigationController = segue.destinationViewController as! UINavigationController
+            let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! BeaconDetailController
             
             controller.delegate = self
@@ -88,12 +88,12 @@ extension StoredBeaconsController: BeaconsStorageDelegate {
 
 extension StoredBeaconsController: BeaconDetailControllerDelegate {
     func beaconDetailControllerDidCancel() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func beaconDetailControllerDidSaveNewBeacon(beacon: BeaconItem) {
-        beaconsStorage.keepBeaconInStorage(beacon)
+        beaconsStorage.keepBeaconInStorage(beacon: beacon)
         tableView.reloadData()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -43,7 +43,7 @@ class BeaconDetailController: UITableViewController {
     
     @IBAction func save(sender: AnyObject) {
         beacon.name = beaconNameTextField.text!
-        delegate.beaconDetailControllerDidSaveNewBeacon(beacon)
+        delegate.beaconDetailControllerDidSaveNewBeacon(beacon: beacon)
     }
  
     func dismissKeyboard() {

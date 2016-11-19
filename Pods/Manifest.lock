@@ -1,12 +1,24 @@
 PODS:
-  - hndlSegue (0.6)
+  - hndlSegue (0.9)
+  - RxCocoa (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxDataSources (1.0.0):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.1)
 
 DEPENDENCIES:
   - hndlSegue (> 0.1)
+  - RxCocoa (~> 3.0.1)
+  - RxDataSources (~> 1.0.0)
+  - RxSwift (~> 3.0.1)
 
 SPEC CHECKSUMS:
-  hndlSegue: 3bb99530f2497ce4e0074c513da298cc8498e0d2
+  hndlSegue: d16a098b15bb555538fd838947b224e48fbd8795
+  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
 
-PODFILE CHECKSUM: 54071dc0c4e89d7bfb299e9ca428d0544a4d752a
+PODFILE CHECKSUM: 87f2cc2729e90b06e89998b558a716ff285c4cce
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

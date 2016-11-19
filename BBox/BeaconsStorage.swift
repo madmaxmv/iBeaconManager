@@ -14,9 +14,9 @@ class BeaconStorage: NSObject {
     let defaultBeaconName = "Unknown"
     
     /// Сохраненные пользователем маячки.
-    private var savedBeacons: [BeaconItem]  = [BeaconItem]()
+    var savedBeacons: [BeaconItem]  = [BeaconItem]()
     /// Маяки, которые находятся в зоне видимости пользователя, но он их не сохранил.
-    private var availableBeacons = [BeaconItem]()
+    var availableBeacons = [BeaconItem]()
     
     /// Делегат для отображения новых ключей.
     weak var delegate: BeaconsStorageDelegate?
@@ -40,9 +40,9 @@ class BeaconStorage: NSObject {
         super.init()
     }
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let fetchReqest = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("Beacon", inManagedObjectContext: self.managedObjectContext!)
+    lazy var fetchedResultsController: NSFetchedResultsController<Beacon> = {
+        let fetchReqest = NSFetchRequest<NSFetchRequestResult>()
+        let entity = NSEntityDescription.entity(forEntityName: "Beacon", in: self.managedObjectContext!)
         fetchReqest.entity = entity
         
         let sortDescriptorByName = NSSortDescriptor(key: "name", ascending: true)
@@ -62,7 +62,7 @@ class BeaconStorage: NSObject {
             print("Error: \(error.localizedDescription)")
         }
         
-        return fetchedResultsController
+        return fetchedResultsController as! NSFetchedResultsController<Beacon>
     }()
 
     
@@ -76,8 +76,7 @@ class BeaconStorage: NSObject {
     }
     
     func loadBeaconFromStorage() {
-        let beacons = fetchedResultsController.fetchedObjects as? [Beacon]
-        for beacon in beacons ?? [] {
+        for beacon in (fetchedResultsController.fetchedObjects as [Beacon]?) ?? [] {
             savedBeacons.append(beacon.asBeaconItem)
         }
     }
@@ -85,10 +84,10 @@ class BeaconStorage: NSObject {
     /// Метод сохраняет маяк в массив сохраненных пользователем маяков (savedBeacons).
     func keepBeaconInStorage(beacon: BeaconItem) {
         savedBeacons.append(beacon)
-        removeBeaconFromOthers(beacon)
+        removeBeaconFromOthers(beacon: beacon)
         
         if let managedContext = managedObjectContext {
-            let beaconEntity = NSEntityDescription.insertNewObjectForEntityForName("Beacon", inManagedObjectContext: managedContext) as! Beacon
+            let beaconEntity = NSEntityDescription.insertNewObject(forEntityName: "Beacon", into: managedContext) as! Beacon
             beaconEntity.fillingFrom(beaconItem: beacon)
         
             managedContext.saveContext()
@@ -98,11 +97,11 @@ class BeaconStorage: NSObject {
     
     /// Метод удаляет маяк из списка сохраненных.
     func removeBeaconWithIndexPathFormSaved(indexPath: NSIndexPath) {
-        savedBeacons.removeAtIndex(indexPath.row)
+        savedBeacons.remove(at: indexPath.row)
         
         if let managedContext = managedObjectContext {
-            let beaconEntity = fetchedResultsController.objectAtIndexPath(indexPath) as! Beacon
-            managedContext.deleteObject(beaconEntity)
+            let beaconEntity = fetchedResultsController.object(at: indexPath as IndexPath) 
+            managedContext.delete(beaconEntity)
             managedContext.saveContext()
             fetchedResultsController.update()
         }
@@ -116,11 +115,11 @@ class BeaconStorage: NSObject {
             }
             index += 1
         }
-        availableBeacons.removeAtIndex(index)
+        availableBeacons.remove(at: index)
     }
     
     /// Ищет beacon в массиве, если находит то возвращает его.
-    private func getBeaconItem(beacon: CLBeacon, inStorage storage: [BeaconItem]) -> BeaconItem? {
+    func getBeaconItem(beacon: CLBeacon, inStorage storage: [BeaconItem]) -> BeaconItem? {
         for item in storage {
             if item == beacon {
                 return item
@@ -129,29 +128,29 @@ class BeaconStorage: NSObject {
         return nil
     }
     
-    private func saveBeaconIfNeed() {
+    func saveBeaconIfNeed() {
         for beacon in availableBeacons {
-            if !beacon.info!.accuracy.isSignMinus && beacon.info!.accuracy < 0.05 {
-                delegate?.canSaveBeaconInStorage(beacon)
+            if !beacon.info!.accuracy.isLess(than: 0.0) && beacon.info!.accuracy < 0.05 {
+                let _ = delegate?.canSaveBeaconInStorage(beacon: beacon)
             }
         }
     }
 }
 
 extension BeaconStorage: CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: NSError) {
-        print("Failed monitoring region: \(error.description)")
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        print("Failed monitoring region: \(error.localizedDescription)")
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Location manager did failed: \(error.description)")
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location manager did failed: \(error.localizedDescription)")
     }
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         for beacon in beacons {
-            if let savedBeacon = getBeaconItem(beacon, inStorage: savedBeacons) {
+            if let savedBeacon = getBeaconItem(beacon: beacon, inStorage: savedBeacons) {
                 savedBeacon.info = beacon
-            } else if let otherBeacon = getBeaconItem(beacon, inStorage: availableBeacons){
+            } else if let otherBeacon = getBeaconItem(beacon: beacon, inStorage: availableBeacons){
                 otherBeacon.info = beacon
             } else {
                 let newBeacon = BeaconItem(name: defaultBeaconName, beacon: beacon)

@@ -21,7 +21,7 @@ class AddRegionViewController: UITableViewController {
     
     lazy var uuidRegex: NSRegularExpression? = {
         do {
-            let regex = try NSRegularExpression(pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", options: [.CaseInsensitive])
+            let regex = try NSRegularExpression(pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", options: [.caseInsensitive])
             return regex
         } catch {
             return nil
@@ -32,32 +32,32 @@ class AddRegionViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveBarButtonItem.enabled = false
+        saveBarButtonItem.isEnabled = false
         
         do {
-            uuidRegex = try NSRegularExpression(pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", options: [.CaseInsensitive])
+            uuidRegex = try NSRegularExpression(pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", options: [.caseInsensitive])
         } catch {
             print("No NSRegularExpression")
         }
         
-        nameTextField.addTarget(self, action: #selector(AddRegionViewController.nameTextFieldChanged(_:)), forControlEvents: .EditingChanged)
-        uuidTextField.addTarget(self, action: #selector(AddRegionViewController.uuidTextFieldChanged(_:)), forControlEvents: .EditingChanged)
+        nameTextField.addTarget(self, action: #selector(AddRegionViewController.nameTextFieldChanged(_:)), for: .editingChanged)
+        uuidTextField.addTarget(self, action: #selector(AddRegionViewController.uuidTextFieldChanged(_:)), for: .editingChanged)
     }
     
     @IBAction func saveRegion() {
-        delegate!.addRegion(nameTextField.text!, withUUID: uuidTextField.text!)
+        delegate!.addRegion(name: nameTextField.text!, withUUID: uuidTextField.text!)
     }
     
-    func nameTextFieldChanged(textField: UITextField) {
+    func nameTextFieldChanged(_ textField: UITextField) {
         nameFieldValid = (textField.text!.characters.count > 0)
-        saveBarButtonItem.enabled = (UUIDFieldValid && nameFieldValid)
+        saveBarButtonItem.isEnabled = (UUIDFieldValid && nameFieldValid)
     }
     
-    func uuidTextFieldChanged(textField: UITextField) {
+    func uuidTextFieldChanged(_ textField: UITextField) {
         if let uuidRegEx = uuidRegex {
-            let numberOfMatches = uuidRegEx.numberOfMatchesInString(textField.text!, options: [.ReportProgress], range: NSMakeRange(0, textField.text!.characters.count))
+            let numberOfMatches = uuidRegEx.numberOfMatches(in: textField.text!, options: [.reportProgress], range: NSMakeRange(0, textField.text!.characters.count))
             UUIDFieldValid = (numberOfMatches > 0)
-            saveBarButtonItem.enabled = (UUIDFieldValid && nameFieldValid)
+            saveBarButtonItem.isEnabled = (UUIDFieldValid && nameFieldValid)
         }
     }
 }

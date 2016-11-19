@@ -39,7 +39,7 @@ class BeaconItem {
     }
     
     convenience init(name: String, beacon: CLBeacon) {
-        self.init(name: name, major: beacon.major, minor: beacon.minor, UUID: beacon.proximityUUID.UUIDString)
+        self.init(name: name, major: beacon.major, minor: beacon.minor, UUID: beacon.proximityUUID.uuidString)
         self.info = beacon
     }
     
@@ -55,7 +55,7 @@ func ==(left: BeaconItem, right: BeaconItem) -> Bool {
 }
 
 func ==(left: BeaconItem, right: CLBeacon) -> Bool {
-    return (left.UUID == right.proximityUUID.UUIDString)
+    return (left.UUID == right.proximityUUID.uuidString)
         && (left.major.description == right.major.description)
         && (left.minor.description == right.minor.description)
 }

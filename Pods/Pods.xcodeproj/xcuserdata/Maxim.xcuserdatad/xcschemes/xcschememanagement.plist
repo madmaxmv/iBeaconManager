@@ -9,6 +9,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RxCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxDataSources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>hndlSegue.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BCF3221436E7F1295EAAEE411D05E6C</key>
+		<key>261116FCAF3F61236D55D01AD4E64675</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC8832B53D0087A8C17A897FA92C0440</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C89E6CCEEFD56C26D2F1022A9A9499E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F153D8975D1418500F7A3F4683D160FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

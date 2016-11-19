@@ -27,9 +27,9 @@ class RegionsPool: NSObject, NSFetchedResultsControllerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
     }
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let fetchReqest = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("Region", inManagedObjectContext: self.managedObjectContext)
+    lazy var fetchedResultsController: NSFetchedResultsController<Region> = { [unowned self] in
+        let fetchReqest = NSFetchRequest<NSFetchRequestResult>()
+        let entity = NSEntityDescription.entity(forEntityName: "Region", in: self.managedObjectContext)
         fetchReqest.entity = entity
         
         let sortDescriptorByName = NSSortDescriptor(key: "name", ascending: true)
@@ -49,7 +49,7 @@ class RegionsPool: NSObject, NSFetchedResultsControllerDelegate {
             print("Error: \(error.localizedDescription)")
         }
         
-        return fetchedResultsController
+        return fetchedResultsController as! NSFetchedResultsController<Region>
     }()
 
     var sectionsCount: Int {
@@ -66,50 +66,50 @@ class RegionsPool: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     func getObjectAtIndex(indexPath: NSIndexPath) -> Region {
-        return fetchedResultsController.objectAtIndexPath(indexPath) as! Region
+        return fetchedResultsController.object(at: indexPath as IndexPath)
     }
     
     func addObject(name: String, withUUID uuid: String) {
         
-        let region = NSEntityDescription.insertNewObjectForEntityForName("Region", inManagedObjectContext: managedObjectContext) as! Region
+        let region = NSEntityDescription.insertNewObject(forEntityName: "Region", into: managedObjectContext) as! Region
         
         region.name = name
         region.uuid = uuid
-        startMonitoringRegion(region)
+        startMonitoringRegion(region: region)
         managedObjectContext.saveContext()
         fetchedResultsController.update()
     }
     
     func removeObjectAtIndex(indexPath: NSIndexPath) {
-        let region = fetchedResultsController.objectAtIndexPath(indexPath) as! Region
-        stopMonitoringRegion(region)
-        self.managedObjectContext.deleteObject(region)
+        let region = fetchedResultsController.object(at: indexPath as IndexPath) 
+        stopMonitoringRegion(region: region)
+        self.managedObjectContext.delete(region)
         managedObjectContext.saveContext()
         fetchedResultsController.update()
     }
     
-    func startMonitoringRegions(delegate delegate: CLLocationManagerDelegate) {
+    func startMonitoringRegions(delegate: CLLocationManagerDelegate) {
         fetchedResultsController.update()
-        for region in fetchedResultsController.fetchedObjects as! [Region]{
-            startMonitoringRegion(region)
+        for region in (fetchedResultsController.fetchedObjects as [Region]?) ?? [] {
+            startMonitoringRegion(region: region)
         }
         locationManager.delegate = delegate
-        locationManager.activityType = .OtherNavigation
+        locationManager.activityType = .otherNavigation
     }
     
     private func startMonitoringRegion(region: Region) {
-        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: region.uuid)!, identifier: region.name)
-        locationManager.startRangingBeaconsInRegion(beaconRegion)
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(uuidString: region.uuid)! as UUID, identifier: region.name)
+        locationManager.startRangingBeacons(in: beaconRegion)
     }
     
     private func stopMonitoringRegion(region: Region) {
-        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: region.uuid)!, identifier: region.name)
-        locationManager.stopRangingBeaconsInRegion(beaconRegion)
+        let beaconRegion = CLBeaconRegion(proximityUUID: NSUUID(uuidString: region.uuid)! as UUID, identifier: region.name)
+        locationManager.stopRangingBeacons(in: beaconRegion)
     }
     
     func stopMonitoringRegions() {
-        for region in fetchedResultsController.fetchedObjects as! [Region]{
-            stopMonitoringRegion(region)
+        for region in (fetchedResultsController.fetchedObjects as [Region]?) ?? [] {
+            stopMonitoringRegion(region: region)
         }
         locationManager.delegate = nil
     }
